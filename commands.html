@@ -1,0 +1,226 @@
+	{"help",									PlayerPermissionLevel::NormalPlayer,	"Wyœwietla listê poleceñ lub opis polecenia",
+																												"<b>/help [<i>polecenie</i>]</b> - wyœwietla informacjê o poleceniu <i>polecenie</i>.\n"
+																												"Np. <b>/help op</b> - wyœwietla informacjê o poleceniu <b>/op</b>\n"
+																												"Jeœli <b>polecenie</b> nie zosta³o podane, /help wyœwietla listê wszystkich dostêpnych poleceñ."},
+	{"me",										PlayerPermissionLevel::NormalPlayer,	"Informowanie o w³asnej akcji",
+																												"<b>/me {<i>tekst czynnoœci</i>}</b> - wyœwietla tekst jako wypowiedŸ, ale bez dwukropka\n"
+																												"Np. <b>/me idzie spaæ</b> - wyœwietli <b>dmc idzie spaæ</b> (jeœli jesteœ mn¹ ;-)"},
+	{"msg",										PlayerPermissionLevel::NormalPlayer,	"Wiadomoœæ prywatna",
+																												"<b>/msg {<i>uzytkownik</i>} {<i>tekst</i>}</b> - wys³anie wiadomoœci prywatnej <i>tekst</i> do u¿ytkownika <i>u¿ytkownik</i>"},
+	{"notice",									PlayerPermissionLevel::NormalPlayer,	"Wiadomoœæ prywatna w oknie czatu",
+																												"<b>/notice {<i>u¿ytkownik</i>} {<i>tekst</i>}</b> - wys³anie wiadomoœci prywatnej <i>tekst</i> do u¿ytkownika.\n"
+																												"W przeciwieñstwie od /msg, polecenie /notie nie powoduje otworzenia nowego okna rozmowy prywatnej w konsolach.\n"
+																												"Wiadomoœæ prywatna wyœwietlana jest w oknie pokoju. Jej widocznoœæ jest jednak ograniczona do nadawcy i adresata."},
+	
+	{"join",									PlayerPermissionLevel::NormalPlayer,	"Wejœcie do pokoju",
+																												"<b>/join {<i>nazwa</i>}</b> - wejœcie do pokoju <i>nazwa</i>\n"
+																												"Je¿eli taki pokój nie istnieje, zostanie utworzony a osoba wydaj¹ca polecenie /join stanie siê automatycznie jego w³aœcicielem.\n"
+																												"Tak utworzony pokój jest tymczasowym - w przypadku braku odwiedzaj¹cych zostanie on automatycznie usuniêty po up³ywie 1 godziny"},
+	{"part",									PlayerPermissionLevel::NormalPlayer,	"Wyjœcie z pokoju",
+																												"<b>/part [<i>komunikat</i>]</b> - wyjœcie z bie¿¹cego pokoju z ewentualnym komunikatem"},
+	{"topic",									PlayerPermissionLevel::NormalPlayer,	"Ustawienie/sprawdzenie tematu dyskusji w pokoju",
+																												"<b>/topic [<i>temat</i>]</b> - ustawienie nowego tematu dyskusji.\n"
+																												"Jeœli nie podano tematu, to polecenie /topic wyœwietla aktualny temat."},
+	{"untopic",									PlayerPermissionLevel::AnyOperator,		"Usuniêcie aktualnego tematu dyskusji",
+																												"<b>/untopic</b> - powoduje usuniêcie aktualnego tematu rozmów w danym pokoju."},
+	{"guest",									PlayerPermissionLevel::AnyOperator,		"Ustawienie koloru u¿ytkownikowi",
+																												"<b>/guest {<i>u¿ytkownik</i>} [<i>numer koloru</i>]</b> - przydzienie koloru o danym numerze <i>numer koloru</i> u¿ytkownikowi w pokoju; kolorów jest 15, od 1 do 15.\n"
+																												"<b>/guest {<i>u¿ytkownik</i>}</b> - pominiêcie numeru koloru spowoduje przydzielenie u¿ytkownikowi koloru o numerze nastêpnym, wzglêdem aktualnego. Jeœli do tej pory by³ kolor nr 4 to po wydaniu /guest {<i>u¿ytkownik</i>} bêdzie 5.\n"
+																												"Mo¿na te¿ u¿ywaæ kodów HTML (<a href=\"http://fonty.pl/kolory.htm\">http://fonty.pl/kolory.htm</a>):\n"
+																												"<b>/guest {<i>u¿ytkownik</i>} #<font color=red>RR</font><font color=green>GG</font><font color=blue>BB</font></b> - gdzie RR to wartoœæ barwy czerwonej koloru (od 00 do FF), GG - barwa zielona, BB - barwa niebieska\n"
+																												"Mo¿na te¿ u¿ywaæ polecenia /guest bez podania u¿ytkownika; wtedy kolor ustawiany jest osobie wydaj¹cej polecenie, np. <b>/guest 5</b>."},
+	{"unguest"	,								PlayerPermissionLevel::AnyOperator,		"Usuniêcie koloru u¿ytkownikowi",
+																												"<b>/unguest {<i>u¿ytkownik</i>}</b> - odebranie u¿ytkownikowi koloru. Brak koloru reprezentuje czarny"},
+
+	{"kick",									PlayerPermissionLevel::AnyOperator,		"Wyrzucenie osoby z pokoju",
+																												"<b>/kick {<i>u¿ytkownik</i>} [<i>powód</i>]</b> - wyrzucenie u¿ytkownika z ewentualnym podaniem powodu\n"
+																												"<u>Uprawnienia</u>: Z pokoju wyrzuciæ mo¿na wy³¹cznie u¿ytkownika o taki samym lub ni¿szym poziomie uprawnieñ.\n"
+																												"Dla przyk³adu: w³aœciciel mo¿e wyrzuciæ ka¿dego u¿ytkownika, ale zwyk³y op nie mo¿e wyrzuciæ w³aœciciela."},
+//	{"kickip",									PlayerPermissionLevel::AnyOperator,		"", ""},
+//	{"kickipof",								PlayerPermissionLevel::AnyOperator,		"", ""},
+
+	{"op",										PlayerPermissionLevel::Owner,			"Nadanie uprawnieñ operatora",
+																												"<b>/op {<i>u¿ytkownik</i>}</b> - nadanie uprawnieñ pe³nego operatora u¿ytkownikowi.\n"
+																												"Pe³ny operator mo¿e nadawaæ uprawnienia operatorów ni¿szego poziomu (half, temp), kopaæ oraz banowaæ (niezaimplementowane).\n"
+																												"Pe³ny operator nie mo¿e wyrzuciæ ani zbanowaæ w³aœciciela pokoju."},
+	{"halfop",									PlayerPermissionLevel::FullOperator,	"Nadanie uprawnieñ pó³operatora",
+																												"<b>/halfop {<i>u¿ytkownik</i>}</b> - nadanie uprawnieñ pó³operatora u¿ytkownikowi.\n"
+																												"Pó³operator mo¿e nadawaæ uprawnienia operatorów ni¿szego poziomu (temp), kopaæ oraz banowaæ (niezaimplementowane).\n"
+																												"Pó³operator nie mo¿e wyrzuciæ ani zbanowaæ w³aœciciela pokoju oraz pe³nego operatora."},
+	{"tempop",									PlayerPermissionLevel::HalfOperator,	"Nadanie uprawnieñ pó³operatora tymczasowego",
+																												"<b>/tempop {<i>u¿ytkownik</i>}</b> - nadanie uprawnieñ pó³operatora tymczasowego u¿ytkownikowi.\n"
+																												"U¿ytkownik gubi swoje uprawnienia po opuszczeniu danego pokoju.\n"
+																												"Pó³operator tymczasowy nie mo¿e nadawaæ uprawnieñ. Mo¿e jedynie kopaæ oraz banowaæ (niezaimplementowane).\n"
+																												"Pó³operator nie mo¿e wyrzuciæ ani zbanowaæ w³aœciciela pokoju, pe³nego operatora oraz pó³operatora."},
+	{"unop",									PlayerPermissionLevel::Owner,			"Odebranie uprawnieñ operatora",
+																												"<b>/unop {<i>u¿ytkownik</i>}</b> - cofniêcie wszelkich uprawnieñ u¿ytkownikowi."},
+	{"tmphalfop",								PlayerPermissionLevel::HalfOperator,	"Nadanie uprawnieñ pó³operatora tymczasowego",
+																												"Polecenie dodano ze wzglêdu na zgodnoœæ z konsol¹ NPCC"},
+	{"ops",										PlayerPermissionLevel::NormalPlayer,	"Lista operatorów i ich uprawnieñ w danym pokoju",
+																												"Wyœwietla listê operatorów w danym pokoju. Format otrzymywanej odpowiedzi jest wymuszony przez konsole ICeQ i NPCC."},
+	{"owners",									PlayerPermissionLevel::NormalPlayer,	"Lista w³aœcicieli oraz operatorów danego pokoju",
+																												"Wyœwietla kompletn¹ listê operatoró i w³aœcicieli danego pokoju. Polecenie to jest nieokrojon¹ wersj¹ <b>/ops</b>"},
+
+	{"broadcast",								PlayerPermissionLevel::AnyServerOperator,	"Wysy³anie komunikatu do wszystkich",
+																												"<b>/broadcast [<i>grupa</i>] {<i>treœæ wiadomoœci</i>}</b> - wyœlanie wiadomoœci do wszystkich zalogowanych u¿ytkowników\n"
+																												"Wiadomoœæ mo¿na wys³aæ do u¿ytkowników w wybranej grupie kategorii (grupa) lub do wszystkich (<b>*</b>)"},
+	{"time",									PlayerPermissionLevel::NormalPlayer,	"Czas serwera", ""},
+	{"test",									PlayerPermissionLevel::NormalPlayer,	"Polecenie testowe", ""},
+	{"stats",									PlayerPermissionLevel::NormalPlayer,	"Statystyki serwera", ""},
+	{"info",									PlayerPermissionLevel::NormalPlayer,	"Informacja o u¿ytkowniku", "<b>/info {<i>u¿ytkownik</i>}</b>"},
+	{"fullinfo",								PlayerPermissionLevel::Root,			"Pe³na informacja o u¿ytkowniku", "<b>/fullinfo {<i>u¿ytkownik</i>}</b>"},
+	{"roominfo",								PlayerPermissionLevel::NormalPlayer,	"Informacja o pokoju", "<b>/roominfo {<i>nazwa pokoju</i>}</b>"},
+
+	{"sql",										PlayerPermissionLevel::Root,			"Wykonanie polecenia SQL na bazie danych serwera",
+																												"Przyk³ad:\n"
+																												"<b>/sql SELECT * FROM tabela WHERE id=1234</b>"},
+
+
+	{"invited",									PlayerPermissionLevel::NormalPlayer,	"Lista u¿ytowników zaproszonych do pokoju",
+																												"<b>/invited</b> - wyœwietla listê osób zaproszonych do pokoju. W przypadku ustawionej flagi <b>+Inv</b> tylko te osoby mog¹ wejœæ"},
+	{"invite",									PlayerPermissionLevel::HalfOperator,	"Dodanie zaproszenia",
+																												"<b>/invite {<i>u¿ytkownik</i>}</b> - wys³anie zaproszenia do pokoju danemu u¿ytkownikowi"},
+	{"uninvite",								PlayerPermissionLevel::HalfOperator,	"Cofniêcie zaproszenia",
+																												"<b>/uninvite {<i>u¿ytkownik</i>}</b> - odebranie zaproszenia do pokoju u¿ytkownikowi"},
+	
+	{"mode",									PlayerPermissionLevel::Owner,			"Ustawienie trybu pokoju",
+																												"<b>/mode {[+|-]iplt} [limit]</b> - ustawia b¹dŸ wyœwietla aktualny tryb pokoju\n"
+																												"<b>/mode</b> - wyœwietla tryb pokoju\n"
+																												"Operator <b>+</b> lub <b>-</b> odpowiada za <b>w³¹czenie</b> (+) lub <b>wy³¹czenie</b> (-) danego trybu pokoju\n"
+																												"Tryby:\n"
+																												"- <b>Inv</b> - pokój tylko na zaproszenie; przy wejœciu do pokoju sprawdzane jest zaproszenie (patrz polecenie <i>/invite</i>)\n"
+																												"- <b>Prv</b> - ukryj pokój; nie bêdzie on wyœwietlany na liœcie pokoi\n"
+																												"- <b>Lim</b> - ustal górny limit osób w pokoju na [<i>limit</i>].\n"
+																												"- <b>Tmp</b> - ustaw pokój jako tymczasowy. Flaga <b>+TMP</b> oznacza, ¿e pokój zostanie usuniêty jeœli przez klika minut nikt siê w nim nie pojawi.\n"
+																												"- <b>Hist</b> - wyœwietlaj historiê wypowiedzi ka¿demu, zaraz po jego wejœciu do pokoju.\n"
+																												"- <b>HAI</b> - u¿ytkownik nieposiadaj¹cy minimalnych uprawnieñ operatorskich nie bêdzie móg³ wyœwietliæ listy operatorów/w³aœcicieli oraz listy banów.\n"
+																												"- <b>Reg</b> - do pokoju mog¹ wejœæ <u>wy³¹cznie</u> u¿ytkownicy zarejestrowani.\n"
+																												"- <b>Ad</b> - do pokoju mog¹ wejœæ <u>wy³¹cznie</u> osoby pe³noletnie, które potwierdzi³ swoj¹ pe³noletnioœæ w profilu u¿ytkownika.\n"
+																												"Przyk³ad:\n"
+																												"<b>/mode +inv</b> - w³¹cz sprawdzanie zaproszeñ przy wejœciu do pokoju\n"
+																												"<b>/mode -inv</b> - wy³¹cz sprawdzanie zaproszeñ; teraz ka¿dy mo¿e wejœæ\n"
+																												"<b>/mode +lim 50</b> - ustaw limit jednoczesnych u¿ytkowników w pokoju na 50\n"},
+	{"terminate",								PlayerPermissionLevel::Root,			"Zakoñczenie pracy serwera z poziomu po³¹czenia",
+																												"<b>/terminate shutdown</b> - zamknij serwer i przerwij dzia³anie skryptu <b>./runme.sh</b>\n"
+																												"<b>/terminate restart</b> - zamknij serwer ale kontynuuj dzia³¹nie skryptu <b>./runme.sh</b>\n"
+																												"<b>/terminate segv</b> - zamknij serwer symuluj¹c b³¹d Segmentation Fault (+ zrzut pamiêci)"},
+	{"quit",									PlayerPermissionLevel::NormalPlayer,	"Zakoñczenie po³¹czenia z serwerem czata",
+																												"<b>/quit [komunikat]</b> - zakoñczenie po³¹czenia wraz z wyœwietleniem ewentualnego komunikatu przy opuszczaniu pokoi"},
+
+	{"bans",									PlayerPermissionLevel::NormalPlayer,	"Wyœwietl listê banów", "Wyœwietla listê banów dla aktualnego pokoju"},
+	{"ban",				   						PlayerPermissionLevel::AnyOperator,		"Ustaw bana dla czatowicza",
+																												"<b>/ban nick [czas] [powód]</b> - dodaje bana dla u¿ytkownika <i>nick</i> na podany czas (w minutach) oraz powód\n"
+																												"Przyk³ad:\n"
+																												"<b>/ban dmc</b> - daje bana u¿ytkownikowi dmc na domyœlny czas oraz bez podania powodu\n"
+																												"<b>/ban dmc 60</b> - daje bana u¿ytkownikowi dmc na 60 minut oraz bez podania powodu\n"
+																												"<b>/ban dmc bo tak</b> - daje bana u¿ytkownikowi dmc na domyœlny czas oraz z powodem \"bo tak\"\n"
+																												"<b>/ban dmc 120 bo tak</b> - daje bana u¿ytkownikowi dmc na dwie godziny oraz z powodem \"bo tak\"\n"
+																												"<i>Uwaga! Polecenie wyrzuca równie¿ osobê o podanym nicku z pokoju</i>"},
+	{"unban",									PlayerPermissionLevel::AnyOperator,		"Zdejmij bana z adresu IP",
+																												"<b>/unban ip</b> - zdejmuje bana z adresu <i>ip</i>\n"
+																												"Przyk³ad:\n"
+																												"<b>/unban 22.33.44.55</b> - zdjêcie bana dla adresu 22.33.44.55\n"
+																												"<i>Uwaga! W przypadku, gdy adres ip blokowany jest przez wiêcej ni¿ jeden ban, zostan¹ one zdjête</i>"},
+	{"banip",									PlayerPermissionLevel::AnyOperator,		"Ustaw bana na adres IP",
+																												"<b>/banip ip [czas] [powód] - dodaj bana dla adresu ip na podany czas oraz powód\n"
+																												"Przyk³ad:\n"
+																												"<b>/banip 22.33.44.55 60</b> - dodaje bana dla adresu ip 22.33.44.55 na czas 60 minut, bez podania powodu \n"
+																												"<b>/banip 22.33.44.55 120 bo tak</b> - dodaje bana dla adresu ip 22.33.44.55 na czas 120 minut, z powodem \"bo tak\"\n"
+																												"Adres IP:\n"
+																												"Mo¿liwe jest podawanie adresów IP w czterech postaciach:\n"
+																												"<b>1.2.3.4</b> - wskazuj¹c konkretny adres ip\n"
+																												"<b>1.2.3.*, 1.2.*.*, 1.*.*.*</b> - wskazuj¹c rodzinê adresów IP, gdzie * oznacza dowoln¹ wartoœæ w adresie IP (dla kompatybilnoœci ze starym polczatem)\n"
+																												"<b>1.2.23.0/255.255.255.0</b> - wskazuj¹c na rodzinê adresów IP z podaniem maski podsieci\n"
+																												"<b>1.2.23.0/24</b> - wskazuj¹c na rodzinê adresów IP z podaniem maski podsieci jako maski lewostronnej\n"},
+	{"bantime",									PlayerPermissionLevel::AnyOperator, 	"Ustawienie domyœlnego czasu bana w pokoju",
+																												"W trakcie"},
+	{"buddies",			   						PlayerPermissionLevel::NormalPlayer,	"Wyœwietl listê znajomych",
+																												"w trakcie"},
+	{"buddy",			   						PlayerPermissionLevel::NormalPlayer,	"Dodaj osobê do listy znajomych",
+																													"w trakcie"},
+	{"unbuddy",			   						PlayerPermissionLevel::NormalPlayer,	"Usuñ osobê z listy znajomych",
+																												"w trakcie"},
+	{"reversebuddy",	   						PlayerPermissionLevel::NormalPlayer,	"Zmieñ status osoby jako znajomego",
+																												"w trakcie"},
+	{"ignored",			   						PlayerPermissionLevel::NormalPlayer,	"Wyœwietl listê osób ignorowanych",
+																												"w trakcie"},
+	
+	{"ignore",			   						PlayerPermissionLevel::NormalPlayer,	"Ignoruj dan¹ osobê",
+																												"w trakcie"},
+	{"unignore",		   						PlayerPermissionLevel::NormalPlayer,	"Przestañ ignorowaæ dan¹ osobê",
+																												"w trakcie"},
+	{"reverseignore",	  						PlayerPermissionLevel::NormalPlayer,	"Zmieñ status ignorowania danej osoby",
+																												"w trakcie"},
+	
+	
+	
+//	{"cgadd",			   						PlayerPermissionLevel::Root, 			"Dodaj now¹ grupê kategorii", "w trakcie"},
+//	{"cgremove",		   						PlayerPermissionLevel::Root, 			"Usuñ istniej¹ca grupê kategorii", "w trakcie"},
+	{"cglist",			   						PlayerPermissionLevel::NormalPlayer,	"Wyœwietl listê dostêpnych grup kategorii", ""},
+	{"cglistcats",		   						PlayerPermissionLevel::NormalPlayer,	"Wyœwietl listê kategorii w wybranej grupie kategorii",
+																												"<b>/cglistcats <grp_id></b> - wyœwietl listê katregorii dostêpnych w grupie o podanej nazwie <grp_id>"},
+	{"cg",										PlayerPermissionLevel::NormalPlayer, 	"Zmienia aktualn¹ grupê kategorii",
+																												"<b>/cg <grp_id></b> - Zmienia aktualn¹ grupê tematyczn¹ (grupê kateogrii i pokoi) na <i>grp_id</i>\n"
+																												"Listê dostêpnych grup kategorii mo¿na uzyskaæ za pomoc¹ polecenia <b>/cglist</b>"},
+//	{"catadd",			   						PlayerPermissionLevel::Root, 			"Dodaj now¹ kategoriê", "w trakcie"},
+//	{"catremove",		   						PlayerPermissionLevel::Root, 			"Usuñ istniej¹c¹ kategoriê", "w trakcie"},
+//	{"catsetcg",		   						PlayerPermissionLevel::Root, 			"Przypisz kategoriê do grupy kategorii", "w trakcie"},
+//  {"catsetdesc"
+	{"catlistrooms",	   						PlayerPermissionLevel::NormalPlayer,	"Wyœwietl listê pokoi przypisanych do danej kategorii",
+																												"<b>/catlistrooms <cat_id></b> - wyœwietl listê pokoii przypisanych do kategorii o nazwie <cat_id>"},
+	{"roomaddcat",		   						PlayerPermissionLevel::AnyServerOperator,	"Dodaj pokój do kategorii",
+																												"w trakcie"},
+	{"roomremovecat",	  			 	  		PlayerPermissionLevel::AnyServerOperator,	"Usuñ pokój z kategorii",
+																												"w trakcie"},
+	{"roomlistcats",	   						PlayerPermissionLevel::NormalPlayer,	"Wyœwietl listê kategorii do których nale¿y pokój",
+																												"w trakcie"},
+
+
+	{"owner",			   						PlayerPermissionLevel::Owner, 			"Dodaj w³aœciciela pokoju",
+																												"<b>/addowner {u¿ytkownik}</b> - nadanie uprawnieñ w³aœciciela pokoju.\n"
+																												"W³aœciciel nie mo¿e zostaæ wyrzucony z pokoju ani zbanowany. Mo¿e równie¿ wejœæ pomimo limitu u¿ytkowników czy braku zaproszeñ.\n"
+																												"Generalnie - mo¿e wszystko w ramach pokoju."},
+	{"unowner",			   						PlayerPermissionLevel::Owner, 			"Usuñ w³aœciciela pokoju",
+																												"<b>/removeowner {u¿ytkownik}</b> - usuniêcie u¿ytkownika z listy w³aœcicieli danego pokoju\n"},
+	{"description",		   						PlayerPermissionLevel::Owner,			"Ustawienie opisu pokoju widoczny (obok jego nazwy) na liœcie kategorii", "<b>/description [opis]</b> - ustawienie opis pokoju."},
+	
+	{"xmlstore",								PlayerPermissionLevel::Root,			"Zapis konfiguracji serwera do pliku XML",
+																												"Wymuszenie zapisu konfiguracji oraz stanu dynamicznego serwera do pliku <i>output-config.xml</i> oraz <i>output-temp-rooms.xml</i>\n"
+																												"Polecenie to mo¿na równie¿ wydaæ poprzez wys³anie sygna³u <b>SIGUSR1</b> do serwera"},
+	{"xmlload",									PlayerPermissionLevel::Root,			"Wczytanie konfiguracji serwera z pliku XML",
+																												"Wymuszenie wczytania konfiguracji oraz stanu dynamicznego serwera z plików <i>input-config.xml</i> oraz <i>input-temp-rooms.xml</i>\n"
+																												"Plik ten powinien powstaæ poprzez edycjê plików 'output-', uzyskanych poleceniem <i>/xmlstore</i>\n"
+																												"Polecenie to mo¿na równie¿ wydaæ poprzez wys³anie sygna³u <b>SIGUSR2</b> do serwera"},
+	{"ver",				   						PlayerPermissionLevel::NormalPlayer,	"Wyœwietl wersjê serwera", ""},
+
+	
+//	{"banipof",			   						PlayerPermissionLevel::AnyOperator,			"", ""},
+	
+	{"skick",			   						PlayerPermissionLevel::AnyServerOperator,	"Wyrzucenie osoby z serwera",
+																												"<b>/skick {u¿ytkownik} [powód]</b> - wyrzucenie u¿ytkownika z ewentualnym podaniem powodu"
+																												"Uprawnienia: W³aœciciel (Root) nie mo¿e zostaæ z niego wyrzucony; operatorzy ni¿szego szczebla mog¹ siê dowolnie wyrzucaæ, jeœli maj¹ tak¹ potrzebê ;)"},
+	{"emotcount", 			 					PlayerPermissionLevel::NormalPlayer,	"Liczba emotikon dostêpnych dla pokoju",
+																												"Polecenie wyœwietla liczbê emotikon dostêpnych dla danego pokoju oraz informacjê, czy liczba ta pochodzi z kontenera indywidualnego (dla danego pokoju), czy z kontenera globalnego."},
+	{"emotadd",			   						PlayerPermissionLevel::FullOperator,	"Dodaj emotikonê do pokoju",
+																												"<b>/emotadd nazwa href</b> - dodanie emotikony <i>id</i> o adresie <i>href</i> do kontenera lokalnego (indywidualnego dla danego pokoju).\n"
+																												"Jeœli w pokój nie ma w³asnego kontenera lokalnego tylko korzysta z globalnego, to tworzony jest nowy - pusty kontener i do niego dodawana jest emotikona.\n"
+																												"Uwaga! W przypadku utowrzenia kontenera lokalnego dla pokoju, emotikony z kontenera globalnego przestaj¹ obowi¹zywaæ!"},
+	{"emotremove",								PlayerPermissionLevel::FullOperator,	"Usuñ emotikonê z pokoju",
+																												"<b>/emotadd nazwa href</b> - usuwa emotikonê <i>id</i> z kontenera lokalnego (indywidualnego dla danego pokoju).\n"
+																												"Jeœli z lokalnego kontenera usuniêto ju¿ wszystkie emotikony (jest on pusty), to w pokoju obowi¹zuj¹ emotikony z kontenera g³ównego."},
+	{"emotlist", 								PlayerPermissionLevel::FullOperator,	"Lista emotikon", 
+																												"Wyœwietla listê emotikon dla danego pokoju, jeœli operator/w³aœciciel taki kontener utworzyli.\n"
+																												"Jeœli nie utworzyli, to wyœwietlane s¹ emotikony z kontenera globalnego dla ca³ego serwera. Zawartoœæ kontenera ustala jest odgórnie - przed administratorów serwera."},
+	{"emotinfo",								PlayerPermissionLevel::NormalPlayer,	"Informacje o emotikonie",
+																												"<b>/emotinfo id </b> - wyœwietla informacje o emotikonie <b>id</b>, takie jak: scie¿kê HTTP, ikonkê, liczbê wyœwietleñ oraz datê ostatniego wyœwietlenia.\n"
+																												"Podawany jest równie¿ kontener, z którego pochodzi emotikona: globalny (dla serwera i pokoi bez emotikon) oraz lokalny (indywidualny dla danego pokoju)"},
+																												
+	{"history",						   			PlayerPermissionLevel::NormalPlayer,	"Poka¿ ostatnie wypowiedzi",
+																												"Polecenie wyœwietla N ostatnich wypowiedzi w danym pokoju. Liczba N jest okreœlana poleceniem /historylimit"},
+	{"historylimit",				   			PlayerPermissionLevel::Owner,			"Ustaw limit ostatnich wypowiedzi",
+																												"<b>/historylimit [wartoœæ]</b> - polecenie ustawia wielkoœæ historii w danym pokoju. Górnym ograniczeniem jest parametr serwera (domyœlnie 10 tekstów)"},
+
+	{"mute",									PlayerPermissionLevel::AnyOperator,		"brak opisu", ""},
+	{"unmute",									PlayerPermissionLevel::AnyOperator,		"brak opisu", ""},
+	{"reversemute",								PlayerPermissionLevel::AnyOperator,		"brak opisu", ""},
+	{"muted",									PlayerPermissionLevel::NormalPlayer,	"brak opisu", ""},
