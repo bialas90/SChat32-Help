@@ -1,769 +1,1107 @@
-﻿	<html><head>
-	<style type="text/css">
-	.cmd_name {
-		font-weight: bold;
-	color:navy;
-	}
-	.cmd_desc {
+﻿<html>
+<head>
+    <style type="text/css">
+        .cmd_name {
+            font-weight: bold;
+            color: navy;
+        }
 
-	}
+        .cmd_desc {
+        }
 
-	.cmd_level {
-	font-weight:bold;
-	color:green;
-	}
+        .cmd_level {
+            font-weight: bold;
+            color: green;
+        }
 
-	.cmd_body {
-	}
+        .cmd_body {
+        }
 
-body{
-	font-family:Verdana, Geneva, Tahoma, sans-serif;
-	font-size: 10pt;
-	background-color:white;
-}
-.cmd_inner
-{
-padding-left: 10px;
-}
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 10pt;
+            background-color: white;
+        }
 
-	</style>
-	</head>
-	<body>
+        .cmd_inner {
+            padding-left: 10px;
+        }
+
+        .auto-style1 {
+            color: #FF0000;
+        }
+
+        .cmd_hdr {
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            padding-bottom: 1px;
+        }
+        .cmd{
+			padding-bottom:32px;
+		}
+    </style>
+</head>
+<body>
+
+    <div>
+
+        <h1>Polecenia</h1>
+        <div class="cmd">
+            <div id="help" class="cmd_hdr"><span class="cmd_name">/help</span> - <span class="cmd_desc">Wyświetla listę poleceń lub opis polecenia</span></div>
+            <div class="cmd_inner">
+                <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+                <div class="cmd_body">
+                    <p>
+                        <b>/help [<i>polecenie</i>]</b> - wyświetla informację o poleceniu <i>polecenie<br>
+                        </i>Np. <b>/help op</b> - wyświetla informację o poleceniu <b>/op<br>
+                        </b>Jeśli <b>polecenie</b> nie zostało podane, /help wyświetla listę wszystkich dostępnych poleceń.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cmd">
+        <div id="me" class="cmd_hdr"><span class="cmd_name">/me</span> - <span class="cmd_desc">Informowanie o własnej akcji</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/me {<i>tekst czynności</i>}</b> - wyświetla tekst jako wypowiedź, ale bez dwukropka<br>
+                    Np. <b>/me idzie spać</b> - wyświetli <b>dmc idzie spać</b> (jeśli jesteś mną ;-)
+                </p>
+            </div>
+        </div>
+        </div>
+
+        <div class="cmd">
+        <div id="msg" class="cmd_hdr"><span class="cmd_name">/msg</span> - <span class="cmd_desc">Wiadomość prywatna</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/msg {<i>uzytkownik</i>} {<i>tekst</i>}</b> - wysłanie wiadomości prywatnej <i>tekst</i> do użytkownika <i>użytkownik</i>
+                </p>
+            </div>
+        </div>
+        </div>
+
+        <div class="cmd">
+        <div id="notice" class="cmd_hdr"><span class="cmd_name">/notice</span> - <span class="cmd_desc">Wiadomość prywatna w oknie czatu</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/notice {<i>użytkownik</i>} {<i>tekst</i>}</b> - wysłanie wiadomości prywatnej <i>tekst</i> do użytkownika. W przeciwieństwie od /msg, polecenie /notie nie powoduje otworzenia nowego okna rozmowy prywatnej w konsolach.<br>
+                    Wiadomość prywatna wyświetlana jest w oknie pokoju. Jej widoczność jest jednak ograniczona do nadawcy i adresata.
+                </p>
+            </div>
+        </div>
+        </div>
+
+        <div class="cmd">
+        <div id="join" class="cmd_hdr"><span class="cmd_name">/join</span> - <span class="cmd_desc">Wejście do pokoju</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/join {<i>nazwa</i>}</b> - wejście do pokoju <i>nazwa</i>.<br>
+                    Jeżeli taki pokój nie istnieje, zostanie utworzony a osoba wydająca polecenie /join stanie się automatycznie jego właścicielem. Tak utworzony pokój jest tymczasowym - w przypadku braku odwiedzających zostanie on automatycznie usunięty po upływie 1 godziny.
 	
-	<div>
-	<h1>Polecenia</h1>
+                </p>
+            </div>
+        </div>
+        </div>
+
+        <!-- -->
+
+        <div class="cmd">
+        <div id="part" class="cmd_hdr"><span class="cmd_name">/part</span> - <span class="cmd_desc">Wyjście z pokoju</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/part [<i>komunikat</i>]</b> - wyjście z bieżącego pokoju z 
+			ewentualnym komunikatem
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+
+        <div class="cmd">
+        <div id="topic" class="cmd_hdr"><span class="cmd_name">/topic</span> - <span class="cmd_desc">Ustawienie/sprawdzenie tematu dyskusji w pokoju</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer/AnyOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/topic [<i>temat</i>]</b> - ustawienie nowego tematu 
+					dyskusji.
+                    <br>
+                    Jeśli nie podano tematu, to polecenie /topic 
+					wyświetla aktualny temat.
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+
+        <div class="cmd">
+        <div id="untopic" class="cmd_hdr"><span class="cmd_name">/untopic</span> - <span class="cmd_desc">Usunięcie aktualnego tematu dyskusji</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/untopic</b> - powoduje usunięcie aktualnego tematu rozmów w 
+			danym pokoju.
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+
+        <div class="cmd">
+        <div id="guest" class="cmd_hdr"><span class="cmd_name">/guest</span> - <span class="cmd_desc">Ustawienie koloru użytkownikowi</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
+            <div class="cmd_body">
+                <ul>
+					<li><b>/guest {<i>użytkownik</i>} [<i>numer koloru</i>]</b> - przydzienie koloru o danym numerze 
+					<i>numer koloru</i> użytkownikowi w pokoju; kolorów jest 15, od 1 do 15.</li>
+					<li><b>/guest {<i>użytkownik</i>}</b> - pominięcie numeru koloru spowoduje przydzielenie użytkownikowi koloru o numerze następnym, względem aktualnego. Jeśli do tej pory był kolor nr 4 to po wydaniu /guest {<i>użytkownik</i>} będzie 5.</li>
+					<li><b>/guest {<i>użytkownik</i>} #<font color="red">RR</font><font color="green">GG</font><font color="blue">BB</font></b> - gdzie RR to wartość barwy czerwonej koloru (od 00 do FF), GG - barwa zielona, BB - barwa niebieska. 
+					Tutaj można używać kodów HTML dla kolorów, patrz
+					<a href="\%22http://fonty.pl/kolory.htm\%22">http://fonty.pl/kolory.htm</a>.</li>
+					<li><b>/guest [<i>numer koloru</i>]</b> -
+                    Można też używać polecenia /guest bez podania użytkownika; wtedy kolor ustawiany jest osobie wydającej polecenie, np. 
+					<b>/guest 5</b>.
+                <br></li>
+				</ul>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+
+        <div class="cmd">
+        <div id="unguest" class="cmd_hdr"><span class="cmd_name">/unguest</span> - <span class="cmd_desc">Usunięcie koloru użytkownikowi</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/unguest {<i>użytkownik</i>}</b> - odebranie użytkownikowi 
+			koloru. Brak koloru reprezentuje czarny
+                </p>
+            </div>
+        </div>
+        </div>
+
+        <!-- -->
+        <div class="cmd">
+        <div id="kick" class="cmd_hdr">
+            <span class="cmd_name">/kick</span> - 
+			<span class="cmd_desc">Wyrzucenie osoby z pokoju</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/kick {<i>użytkownik</i>} [<i>powód</i>]</b> - wyrzucenie użytkownika z ewentualnym podaniem powodu.<br>
+                    <u>Uprawnienia</u>: Z pokoju wyrzucić można wyłącznie użytkownika o taki samym lub niższym poziomie uprawnień.<br>
+                    Dla przykładu: właściciel może wyrzucić każdego użytkownika, ale zwykły op nie może wyrzucić właściciela.
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="op" class="cmd_hdr"><span class="cmd_name">/op</span> - <span class="cmd_desc">Nadanie uprawnień operatora</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">Owner</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/op {<i>użytkownik</i>}</b> - nadanie uprawnień pełnego operatora użytkownikowi.<br>
+                    Pełny operator może nadawać uprawnienia operatorów niższego poziomu (half, temp), kopać oraz banować (niezaimplementowane). Pełny operator nie może wyrzucić ani zbanować właściciela pokoju.
+                </p>
+            </div>
+        </div>
+
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="halfop" class="cmd_hdr"><span class="cmd_name">/halfop</span> - <span class="cmd_desc">Nadanie uprawnień półoperatora</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">FullOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/halfop {<i>użytkownik</i>}</b> - nadanie uprawnień półoperatora użytkownikowi. Półoperator może nadawać uprawnienia operatorów niższego poziomu (temp), kopać oraz banować (niezaimplementowane).<br>
+                    Półoperator nie może wyrzucić ani zbanować właściciela pokoju oraz pełnego operatora.
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="tempop" class="cmd_hdr"><span class="cmd_name">/tempop</span> - <span class="cmd_desc">Nadanie uprawnień półoperatora tymczasowego</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">HalfOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/tempop {<i>użytkownik</i>}</b> - nadanie uprawnień półoperatora tymczasowego użytkownikowi.<br>
+                    Użytkownik gubi swoje uprawnienia po opuszczeniu danego pokoju. Półoperator tymczasowy nie może nadawać uprawnień. Może jedynie kopać oraz banować (niezaimplementowane). Półoperator nie może wyrzucić ani zbanować właściciela pokoju, pełnego operatora oraz półoperatora.
+                </p>
+                <p>
+                    Alternatywnie, to samo polecnie dostępne jest pod nazwą <strong>tmphalfop.</strong> Pozwala to zachować kompatybilność z konsolą NPCC.
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="unop" class="cmd_hdr"><span class="cmd_name">/unop</span> - <span class="cmd_desc">Odebranie uprawnień operatora</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">Owner</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/unop {<i>użytkownik</i>}</b> - cofnięcie wszelkich uprawnień użytkownikowi.
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="ops" class="cmd_hdr">
+            <span class="cmd_name">/ops</span> - 
+			<span class="cmd_desc">Lista operatorów i ich uprawnień w danym pokoju</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    Wyświetla listę operatorów w danym pokoju. Format otrzymywanej odpowiedzi jest wymuszony przez konsole ICeQ i NPCC.
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="owners" class="cmd_hdr"><span class="cmd_name">/owners</span> - <span class="cmd_desc">Lista właścicieli oraz operatorów danego pokoju</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    Wyświetla kompletną listę operatoró i właścicieli danego pokoju. Polecenie to jest nieokrojoną wersją <b>/ops</b>
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="broadcast" class="cmd_hdr"><span class="cmd_name">/broadcast</span> - <span class="cmd_desc">Wysyłanie komunikatu do wszystkich</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">AnyServerOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/broadcast [<i>grupa</i>] {<i>treść wiadomości</i>}</b> - wyślanie wiadomości do wszystkich zalogowanych użytkowników. Wiadomość można wysłać do użytkowników w wybranej grupie kategorii (grupa) lub do wszystkich (<b>*</b>)
 	
-	<div id="help"><span class="cmd_name">/help</span> - <span class="cmd_desc">Wyświetla listę poleceń lub opis polecenia</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-				<b>/help [<i>polecenie</i>]</b> - wyświetla informację o poleceniu <i>polecenie<br>
-				</i>Np. <b>/help op</b> - wyświetla informację o poleceniu <b>/op<br>
-				</b>Jeśli <b>polecenie</b> nie zostało podane, /help wyświetla listę wszystkich dostępnych poleceń.
-			</p>
-		</div>
-	</div>
-		
-		<div id="me"><span class="cmd_name">/me</span> - <span class="cmd_desc">Informowanie o własnej akcji</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-																															"<b>/me {<i>tekst czynności</i>}</b> - wyświetla tekst jako wypowiedź, ale bez dwukropka\n"
-																													"Np. <b>/me idzie spać</b> - wyświetli <b>dmc idzie spać</b> (jeśli jesteś mną ;-)"},
-	
-			</p>
-		</div>
-	</div>	
-		<div id="msg"><span class="cmd_name">/msg</span> - <span class="cmd_desc">Wiadomość prywatna</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-																															"<b>/msg {<i>uzytkownik</i>} {<i>tekst</i>}</b> - wysłanie wiadomości prywatnej <i>tekst</i> do użytkownika <i>użytkownik</i>"},
-	
-			</p>
-		</div>
-	</div>	
-		<div id="notice"><span class="cmd_name">/notice</span> - <span class="cmd_desc">Wiadomość prywatna w oknie czatu</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-																															"<b>/notice {<i>użytkownik</i>} {<i>tekst</i>}</b> - wysłanie wiadomości prywatnej <i>tekst</i> do użytkownika.\n"
-																													"W przeciwieństwie od /msg, polecenie /notie nie powoduje otworzenia nowego okna rozmowy prywatnej w konsolach.\n"
-																													"Wiadomość prywatna wyświetlana jest w oknie pokoju. Jej widoczność jest jednak ograniczona do nadawcy i adresata."},
-	
-			</p>
-		</div>
-	</div>	
-		<div id="join"><span class="cmd_name">/join</span> - <span class="cmd_desc">Wejście do pokoju</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-																															"<b>/join {<i>nazwa</i>}</b> - wejście do pokoju <i>nazwa</i>\n"
-																													"Jeżeli taki pokój nie istnieje, zostanie utworzony a osoba wydająca polecenie /join stanie się automatycznie jego właścicielem.\n"
-																													"Tak utworzony pokój jest tymczasowym - w przypadku braku odwiedzających zostanie on automatycznie usunięty po upływie 1 godziny"},
-	
-			</p>
-		</div>
-	</div>	
-	
-		<!-- -->
-		<div id="part"><span class="cmd_name">/part</span> - <span class="cmd_desc">Wyjście z pokoju</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-			"<b>/part [<i>komunikat</i>]</b> - wyjście z bieżącego pokoju z ewentualnym komunikatem"},
-			</p>
-		</div>
-	</div>		
-		<!-- -->
-		<div id="topic"><span class="cmd_name">/topic</span> - <span class="cmd_desc">Ustawienie/sprawdzenie tematu dyskusji w pokoju</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer/AnyOperator</span></div>
-		<div class="cmd_body">
-			<p>
-					"<b>/topic [<i>temat</i>]</b> - ustawienie nowego tematu dyskusji.\n"
-																													"Jeśli nie podano tematu, to polecenie /topic wyświetla aktualny temat."},
-			</p>
-		</div>
-	</div>	<!-- -->
-		<div id="untopic"><span class="cmd_name">/untopic</span> - <span class="cmd_desc">Usunięcie aktualnego tematu dyskusji</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
-		<div class="cmd_body">
-			<p>
-			"<b>/untopic</b> - powoduje usunięcie aktualnego tematu rozmów w danym pokoju."},
-			</p>
-		</div>
-	</div>	<!-- -->
-		<div id="guest"><span class="cmd_name">/guest</span> - <span class="cmd_desc">Ustawienie koloru użytkownikowi</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
-		<div class="cmd_body">
-			<p>
-							"<b>/guest {<i>użytkownik</i>} [<i>numer koloru</i>]</b> - przydzienie koloru o danym numerze <i>numer koloru</i> użytkownikowi w pokoju; kolorów jest 15, od 1 do 15.\n"
-																													"<b>/guest {<i>użytkownik</i>}</b> - pominięcie numeru koloru spowoduje przydzielenie użytkownikowi koloru o numerze następnym, względem aktualnego. Jeśli do tej pory był kolor nr 4 to po wydaniu /guest {<i>użytkownik</i>} będzie 5.\n"
-																													"Można też używać kodów HTML (<a href="\%22http://fonty.pl/kolory.htm\%22">http://fonty.pl/kolory.htm</a>):\n"
-																													"<b>/guest {<i>użytkownik</i>} #<font color="red">RR</font><font color="green">GG</font><font color="blue">BB</font></b> - gdzie RR to wartość barwy czerwonej koloru (od 00 do FF), GG - barwa zielona, BB - barwa niebieska\n"
-																													"Można też używać polecenia /guest bez podania użytkownika; wtedy kolor ustawiany jest osobie wydającej polecenie, np. <b>/guest 5</b>."},		
-			</p>
-		</div>
-	</div>	<!-- -->
-		<div id="unguest"><span class="cmd_name">/unguest</span> - <span class="cmd_desc">Usunięcie koloru użytkownikowi</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
-		<div class="cmd_body">
-			<p>
-	"<b>/unguest {<i>użytkownik</i>}</b> - odebranie użytkownikowi koloru. Brak koloru reprezentuje czarny"},		
-			</p>
-		</div>
-	</div>	<!-- -->
-		<div id="kick"><span class="cmd_name">/kick</span> - <span class="cmd_desc">"Wyrzucenie osoby z pokoju</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
-		<div class="cmd_body">
-			<p>
-																															"<b>/kick {<i>użytkownik</i>} [<i>powód</i>]</b> - wyrzucenie użytkownika z ewentualnym podaniem powodu\n"
-																													"<u>Uprawnienia</u>: Z pokoju wyrzucić można wyłącznie użytkownika o taki samym lub niższym poziomie uprawnień.\n"
-																													"Dla przykładu: właściciel może wyrzucić każdego użytkownika, ale zwykły op nie może wyrzucić właściciela."},
-	
-			</p>
-		</div>
-	</div>	<!-- -->
-		<div id="op"><span class="cmd_name">/op</span> - <span class="cmd_desc">Nadanie uprawnień operatora</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">Owner</span></div>
-		<div class="cmd_body">
-			<p>
-																															"<b>/op {<i>użytkownik</i>}</b> - nadanie uprawnień pełnego operatora użytkownikowi.\n"
-																													"Pełny operator może nadawać uprawnienia operatorów niższego poziomu (half, temp), kopać oraz banować (niezaimplementowane).\n"
-																													"Pełny operator nie może wyrzucić ani zbanować właściciela pokoju."},
-	
-			</p>
-		</div>
-	</div>	<!-- -->
-		<div id="halfop"><span class="cmd_name">/halfop</span> - <span class="cmd_desc">Nadanie uprawnień półoperatora</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">FullOperator</span></div>
-		<div class="cmd_body">
-			<p>
-																															"<b>/halfop {<i>użytkownik</i>}</b> - nadanie uprawnień półoperatora użytkownikowi.\n"
-																													"Półoperator może nadawać uprawnienia operatorów niższego poziomu (temp), kopać oraz banować (niezaimplementowane).\n"
-																													"Półoperator nie może wyrzucić ani zbanować właściciela pokoju oraz pełnego operatora."},
-		
-			</p>
-		</div>
-	</div>	<!-- -->
-		<div id="tempop"><span class="cmd_name">/tempop</span> - <span class="cmd_desc">Nadanie uprawnień półoperatora tymczasowego</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">HalfOperator</span></div>
-		<div class="cmd_body">
-			<p>
-																															"<b>/tempop {<i>użytkownik</i>}</b> - nadanie uprawnień półoperatora tymczasowego użytkownikowi.\n"
-																													"Użytkownik gubi swoje uprawnienia po opuszczeniu danego pokoju.\n"
-																													"Półoperator tymczasowy nie może nadawać uprawnień. Może jedynie kopać oraz banować (niezaimplementowane).\n"
-																													"Półoperator nie może wyrzucić ani zbanować właściciela pokoju, pełnego operatora oraz półoperatora."},
-		
-		{"tmphalfop",								PlayerPermissionLevel::HalfOperator,	"Nadanie uprawnień półoperatora tymczasowego",
-																													"Polecenie dodano ze względu na zgodność z konsolą NPCC"},
-	
-			</p>
-		</div>
-	</div>	<!-- -->
-		<div id="unop"><span class="cmd_name">/unop</span> - <span class="cmd_desc">Odebranie uprawnień operatora</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">Owner</span></div>
-		<div class="cmd_body">
-			<p>
-																															"<b>/unop {<i>użytkownik</i>}</b> - cofnięcie wszelkich uprawnień użytkownikowi."},
-	
-			</p>
-		</div>
-	</div>	<!-- -->
-		<div id="ops"><span class="cmd_name">/ops</span> - <span class="cmd_desc">"Lista operatorów i ich uprawnień w danym pokoju</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-																															"Wyświetla listę operatorów w danym pokoju. Format otrzymywanej odpowiedzi jest wymuszony przez konsole ICeQ i NPCC."},
-	
-			</p>
-		</div>
-	</div>	<!-- -->
-		<div id="owners"><span class="cmd_name">/owners</span> - <span class="cmd_desc">Lista właścicieli oraz operatorów danego pokoju</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-				"Wyświetla kompletną listę operatoró i właścicieli danego pokoju. Polecenie to jest nieokrojoną wersją <b>/ops</b>"},
-			</p>
-		</div>
-	</div>	<!-- -->
-		<div id="broadcast"><span class="cmd_name">/broadcast</span> - <span class="cmd_desc">Wysyłanie komunikatu do wszystkich</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">AnyServerOperator</span></div>
-		<div class="cmd_body">
-			<p>
-																															"<b>/broadcast [<i>grupa</i>] {<i>treść wiadomości</i>}</b> - wyślanie wiadomości do wszystkich zalogowanych użytkowników\n"
-																													"Wiadomość można wysłać do użytkowników w wybranej grupie kategorii (grupa) lub do wszystkich (<b>*</b>)"},
-	
-			</p>
-		</div>
-	</div>	<!-- -->
-		<div id="time"><span class="cmd_name">/time</span> - <span class="cmd_desc">Czas serwera</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="time" class="cmd_hdr"><span class="cmd_name">/time</span> - <span class="cmd_desc">Czas serwera</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="test" class="cmd_hdr"><span class="cmd_name">/test</span> - <span class="cmd_desc">Polecenie testowe</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="stats" class="cmd_hdr"><span class="cmd_name">/stats</span> - <span class="cmd_desc">Statystyki serwera</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="info" class="cmd_hdr"><span class="cmd_name">/info</span> - <span class="cmd_desc">Informacja o użytkowniku</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/info {<i>użytkownik</i>}</b> - wyświetla informację o danym 
+			użytkowniku.
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="fullinfo" class="cmd_hdr"><span class="cmd_name">/fullinfo</span> - <span class="cmd_desc">Pełna informacja o użytkowniku</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">Root</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/fullinfo {<i>użytkownik</i></b>} - wyświetla pełną informację o 
+			 użytkowniku. Informacje te są istotne z punktu widzenia 
+			 administracji serwerem (statyki użytkownika, zajmowana pamięć, 
+			 wielkości i typy kolekcji danych, itd.)
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="roominfo" class="cmd_hdr"><span class="cmd_name">/roominfo</span> - <span class="cmd_desc">Informacja o pokoju</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/roominfo {<i>nazwa pokoju</i>}</b>
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="sql" class="cmd_hdr"><span class="cmd_name">/sql</span> - <span class="cmd_desc">Wykonanie polecenia SQL na bazie danych serwera</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">Root</span></div>
+            <div class="cmd_body">
+                <p>
+                    Przykład: <b>/sql SELECT * FROM tabela WHERE id=1234</b>
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="invited" class="cmd_hdr"><span class="cmd_name">/invited</span> - <span class="cmd_desc">Lista użytowników zaproszonych do pokoju</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/invited</b> - wyświetla listę osób zaproszonych do pokoju. W przypadku ustawionej flagi <b>+Inv</b> tylko te osoby mogą wejść
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="invite" class="cmd_hdr"><span class="cmd_name">/invite</span> - <span class="cmd_desc">Dodanie zaproszenia</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">HalfOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/invite {<i>użytkownik</i>}</b> - wysłanie zaproszenia do pokoju danemu użytkownikowi
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="uninvite" class="cmd_hdr"><span class="cmd_name">/uninvite</span> - <span class="cmd_desc">Cofnięcie zaproszenia</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">HalfOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/uninvite {<i>użytkownik</i>}</b> - odebranie zaproszenia do pokoju użytkownikowi
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="mode" class="cmd_hdr"><span class="cmd_name">/mode</span> - <span class="cmd_desc">Ustawienie trybu pokoju</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">Owner</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/mode {[+|-]iplt} [limit]</b> - ustawia bądź wyświetla aktualny tryb pokoju.<br>
+                    Operator <b>+</b> lub <b>-</b> odpowiada za <b>włączenie</b> (+) lub <b>wyłączenie</b> (-) danego trybu pokoju.<br>
+                    <b>/mode</b> - wyświetla tryb pokoju
+                </p>
+                <p>Tryby:</p>
+                <ul>
+                    <li><b>Inv</b> - pokój tylko na zaproszenie; przy wejściu do pokoju sprawdzane jest zaproszenie (patrz polecenie 
+				<i>/invite</i>)</li>
+                    <li><b>Prv</b> - ukryj pokój; nie będzie on wyświetlany na liście pokoi</li>
+                    <li><b>Lim</b> - ustal górny limit osób w pokoju na [<i>limit</i>]</li>
+                    <li><b>Tmp</b> - ustaw pokój jako tymczasowy. Flaga <b>+TMP</b> oznacza, że pokój zostanie usunięty jeśli przez klika minut nikt się w nim nie pojawi.</li>
+                    <li><b>Hist</b> - wyświetlaj historię wypowiedzi każdemu, zaraz po jego wejściu do pokoju.</li>
+                    <li><b>HAI</b> - użytkownik nieposiadający minimalnych uprawnień operatorskich nie będzie mógł wyświetlić listy operatorów/właścicieli oraz listy banów.</li>
+                    <li><b>Reg</b> - do pokoju mogą wejść <u>wyłącznie</u> użytkownicy zarejestrowani.</li>
+                    <li><b>Ad</b> - do pokoju mogą wejść <u>wyłącznie</u> osoby pełnoletnie, które potwierdził swoją pełnoletniość w profilu użytkownika.</li>
+                </ul>
+                <p>
+                    Przykład:<b><br>
+                        /mode +inv</b> - włącz sprawdzanie zaproszeń przy wejściu do pokoju<b><br>
+                            /mode -inv</b> - wyłącz sprawdzanie zaproszeń; teraz każdy może wejść<b><br>
+                                /mode +lim 50</b> - ustaw limit jednoczesnych użytkowników w pokoju na 50
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="terminate" class="cmd_hdr"><span class="cmd_name">/terminate</span> - <span class="cmd_desc">Zakończenie pracy serwera z poziomu połączenia</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">Root</span></div>
+            <div class="cmd_body">
+                <ul>
+                    <li><b>/terminate shutdown</b> - zamknij serwer i przerwij działanie skryptu 
+				<b>./runme.sh</b></li>
+                    <li><b>/terminate restart</b> - zamknij serwer ale kontynuuj działąnie skryptu 
+				<b>./runme.sh</b></li>
+                    <li><b>/terminate segv</b> - zamknij serwer symulując błąd 
+				Segmentation Fault (+ zrzut pamięci)</li>
+                </ul>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="quit" class="cmd_hdr"><span class="cmd_name">/quit</span> - <span class="cmd_desc">Zakończenie połączenia z serwerem czata</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/quit [komunikat]</b> - zakończenie połączenia wraz z wyświetleniem ewentualnego komunikatu przy opuszczaniu pokoi
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="bans" class="cmd_hdr"><span class="cmd_name">/bans</span> - <span class="cmd_desc">Wyświetl listę banów</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    Wyświetla listę banów dla aktualnego pokoju
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="ban" class="cmd_hdr">
+            <span class="cmd_name">/ban</span> - 
+			<span class="cmd_desc">Ustaw bana dla czatowicza</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    Składnia:
+                </p>
+                <p>
+                    <b>/ban nick [czas] [powód]</b> - dodaje bana dla użytkownika <i>nick</i> na podany czas (w minutach) oraz powód
+                </p>
+                <p>
+                    Przykład:
+                </p>
+                <ul>
+                    <li><b>/ban dmc</b> - daje bana użytkownikowi dmc na domyślny czas oraz bez podania powodu</li>
+                    <li><b>/ban dmc 60</b> - daje bana użytkownikowi dmc na 60 minut oraz bez podania powodu</li>
+                    <li><b>/ban dmc bo tak</b> - daje bana użytkownikowi dmc na domyślny czas oraz z powodem "bo tak"</li>
+                    <li><b>/ban dmc 120 bo tak</b> - daje bana użytkownikowi dmc na dwie godziny oraz z powodem "bo tak"</li>
+                </ul>
+                <p>
+                    <span class="auto-style1"><strong>Uwaga!</strong></span> Polecenie wyrzuca również osobę o podanym nicku z pokoju.
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="unban" class="cmd_hdr">
+            <span class="cmd_name">/unban</span> - 
+			<span class="cmd_desc">Zdejmij bana z adresu IP</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/unban ip</b> - zdejmuje bana z adresu <i>ip</i>
+                </p>
+                <p>
+                    Przykład:
+                </p>
+                <ul>
+                    <li><b>/unban 22.33.44.55</b> - zdjęcie bana dla adresu 22.33.44.55</li>
+                </ul>
+                <p>
+                    <span class="auto-style1"><strong>Uwaga!</strong></span> W przypadku, gdy adres ip blokowany jest przez więcej niż jeden ban, zostaną one zdjęte.
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="banip" class="cmd_hdr">
+            <span class="cmd_name">/banip</span> - 
+			<span class="cmd_desc">Ustaw bana na adres IP</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/banip ip [czas] [powód]</b> - dodaj bana dla adresu ip na podany czas oraz powód
+                </p>
+                <p>
+                    Przykład:
+                </p>
+                <ul>
+                    <li><b>/banip 22.33.44.55 60</b> - dodaje bana dla adresu ip 22.33.44.55 na czas 60 minut, bez podania powodu</li>
+                    <li><b>/banip 22.33.44.55 120 bo tak</b> - dodaje bana dla adresu ip 22.33.44.55 na czas 120 minut, z powodem "bo tak"</li>
+                </ul>
+                <p>
+                    <strong>Adres IP<br>
+                    </strong>Możliwe jest podawanie adresów IP w czterech postaciach:
+                </p>
+                <ul>
+                    <li><b>1.2.3.4</b> - wskazując konkretny adres ip</li>
+                    <li><b>1.2.3.*, 1.2.*.*, 1.*.*.*</b> - wskazując rodzinę adresów IP, gdzie * oznacza dowolną wartość w adresie IP (dla kompatybilności ze starym polczatem)</li>
+                    <li><b>1.2.23.0/255.255.255.0</b> - wskazując na rodzinę adresów IP z podaniem maski podsieci</li>
+                    <li><b>1.2.23.0/24</b> - wskazując na rodzinę adresów IP z podaniem maski podsieci jako maski lewostronnej
 			
-			</p>
-		</div>
-	</div>	<!-- -->
-		<div id="test"><span class="cmd_name">/test</span> - <span class="cmd_desc">Polecenie testowe</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-			
-			</p>
-		</div>
-	</div>	<!-- -->
-		<div id="stats"><span class="cmd_name">/stats</span> - <span class="cmd_desc">Statystyki serwera</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-			
-			</p>
-		</div>
-	</div>	<!-- -->
-		<div id="info"><span class="cmd_name">/info</span> - <span class="cmd_desc">Informacja o użytkowniku</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-			"<b>/info {<i>użytkownik</i>}</b>"},
-			</p>
-		</div>
-	</div>	<!-- -->
-		<div id="fullinfo"><span class="cmd_name">/fullinfo</span> - <span class="cmd_desc">Pełna informacja o użytkowniku</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">Root</span></div>
-		<div class="cmd_body">
-			<p>
-			 "<b>/fullinfo {<i>użytkownik</i>}</b>"},
-			</p>
-		</div>
-	</div>	<!-- -->
-		<div id="roominfo"><span class="cmd_name">/roominfo</span> - <span class="cmd_desc">Informacja o pokoju</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-			"<b>/roominfo {<i>nazwa pokoju</i>}</b>"},
-			</p>
-		</div>
-	</div>	<!-- -->
-		<div id="sql"><span class="cmd_name">/sql</span> - <span class="cmd_desc">Wykonanie polecenia SQL na bazie danych serwera</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">Root</span></div>
-		<div class="cmd_body">
-			<p>
-																														"Przykład:\n"
-																													"<b>/sql SELECT * FROM tabela WHERE id=1234</b>"},
-		
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="invited"><span class="cmd_name">/invited</span> - <span class="cmd_desc">Lista użytowników zaproszonych do pokoju</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-																															"<b>/invited</b> - wyświetla listę osób zaproszonych do pokoju. W przypadku ustawionej flagi <b>+Inv</b> tylko te osoby mogą wejść"},
-	
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="invite"><span class="cmd_name">/invite</span> - <span class="cmd_desc">Dodanie zaproszenia</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">HalfOperator</span></div>
-		<div class="cmd_body">
-			<p>
-																													"<b>/invite {<i>użytkownik</i>}</b> - wysłanie zaproszenia do pokoju danemu użytkownikowi"},
-			
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="uninvite"><span class="cmd_name">/uninvite</span> - <span class="cmd_desc">Cofnięcie zaproszenia</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">HalfOperator</span></div>
-		<div class="cmd_body">
-			<p>
-																													"<b>/uninvite {<i>użytkownik</i>}</b> - odebranie zaproszenia do pokoju użytkownikowi"},
-			
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="mode"><span class="cmd_name">/mode</span> - <span class="cmd_desc">Ustawienie trybu pokoju</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">Owner</span></div>
-		<div class="cmd_body">
-			<p>
-																													"<b>/mode {[+|-]iplt} [limit]</b> - ustawia bądź wyświetla aktualny tryb pokoju\n"
-																													"<b>/mode</b> - wyświetla tryb pokoju\n"
-																													"Operator <b>+</b> lub <b>-</b> odpowiada za <b>włączenie</b> (+) lub <b>wyłączenie</b> (-) danego trybu pokoju\n"
-																													"Tryby:\n"
-																													"- <b>Inv</b> - pokój tylko na zaproszenie; przy wejściu do pokoju sprawdzane jest zaproszenie (patrz polecenie <i>/invite</i>)\n"
-																													"- <b>Prv</b> - ukryj pokój; nie będzie on wyświetlany na liście pokoi\n"
-																													"- <b>Lim</b> - ustal górny limit osób w pokoju na [<i>limit</i>].\n"
-																													"- <b>Tmp</b> - ustaw pokój jako tymczasowy. Flaga <b>+TMP</b> oznacza, że pokój zostanie usunięty jeśli przez klika minut nikt się w nim nie pojawi.\n"
-																													"- <b>Hist</b> - wyświetlaj historię wypowiedzi każdemu, zaraz po jego wejściu do pokoju.\n"
-																													"- <b>HAI</b> - użytkownik nieposiadający minimalnych uprawnień operatorskich nie będzie mógł wyświetlić listy operatorów/właścicieli oraz listy banów.\n"
-																													"- <b>Reg</b> - do pokoju mogą wejść <u>wyłącznie</u> użytkownicy zarejestrowani.\n"
-																													"- <b>Ad</b> - do pokoju mogą wejść <u>wyłącznie</u> osoby pełnoletnie, które potwierdził swoją pełnoletniość w profilu użytkownika.\n"
-																													"Przykład:\n"
-																													"<b>/mode +inv</b> - włącz sprawdzanie zaproszeń przy wejściu do pokoju\n"
-																													"<b>/mode -inv</b> - wyłącz sprawdzanie zaproszeń; teraz każdy może wejść\n"
-																													"<b>/mode +lim 50</b> - ustaw limit jednoczesnych użytkowników w pokoju na 50\n"},
-			
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="terminate"><span class="cmd_name">/terminate</span> - <span class="cmd_desc">Zakończenie pracy serwera z poziomu połączenia</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">Root</span></div>
-		<div class="cmd_body">
-			<p>
-																															"<b>/terminate shutdown</b> - zamknij serwer i przerwij działanie skryptu <b>./runme.sh</b>\n"
-																													"<b>/terminate restart</b> - zamknij serwer ale kontynuuj działąnie skryptu <b>./runme.sh</b>\n"
-																													"<b>/terminate segv</b> - zamknij serwer symulując błąd Segmentation Fault (+ zrzut pamięci)"},
-	
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="quit"><span class="cmd_name">/quit</span> - <span class="cmd_desc">Zakończenie połączenia z serwerem czata</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-																															"<b>/quit [komunikat]</b> - zakończenie połączenia wraz z wyświetleniem ewentualnego komunikatu przy opuszczaniu pokoi"},
-	
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="bans"><span class="cmd_name">/bans</span> - <span class="cmd_desc">Wyświetl listę banów</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-			"Wyświetla listę banów dla aktualnego pokoju"},
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="ban"><span class="cmd_name">/ban</span> - <span class="cmd_desc">"Ustaw bana dla czatowicza</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
-		<div class="cmd_body">
-			<p>
-																													"<b>/ban nick [czas] [powód]</b> - dodaje bana dla użytkownika <i>nick</i> na podany czas (w minutach) oraz powód\n"
-																													"Przykład:\n"
-																													"<b>/ban dmc</b> - daje bana użytkownikowi dmc na domyślny czas oraz bez podania powodu\n"
-																													"<b>/ban dmc 60</b> - daje bana użytkownikowi dmc na 60 minut oraz bez podania powodu\n"
-																													"<b>/ban dmc bo tak</b> - daje bana użytkownikowi dmc na domyślny czas oraz z powodem \"bo tak\"\n"
-																													"<b>/ban dmc 120 bo tak</b> - daje bana użytkownikowi dmc na dwie godziny oraz z powodem \"bo tak\"\n"
-																													"<i>Uwaga! Polecenie wyrzuca również osobę o podanym nicku z pokoju</i>"},
-			
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="unban"><span class="cmd_name">/unban</span> - <span class="cmd_desc">"Zdejmij bana z adresu IP",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
-		<div class="cmd_body">
-			<p>
-																															"<b>/unban ip</b> - zdejmuje bana z adresu <i>ip</i>\n"
-																													"Przykład:\n"
-																													"<b>/unban 22.33.44.55</b> - zdjęcie bana dla adresu 22.33.44.55\n"
-																													"<i>Uwaga! W przypadku, gdy adres ip blokowany jest przez więcej niż jeden ban, zostaną one zdjęte</i>"},
-	
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="banip"><span class="cmd_name">/banip</span> - <span class="cmd_desc">"Ustaw bana na adres IP",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
-		<div class="cmd_body">
-			<p>
-																													<b>/banip ip [czas] [powód]</b> - dodaj bana dla adresu ip na podany czas oraz powód
-																													Przykład:
-																													<b>/banip 22.33.44.55 60</b> - dodaje bana dla adresu ip 22.33.44.55 na czas 60 minut, bez podania powodu
-																													<b>/banip 22.33.44.55 120 bo tak</b> - dodaje bana dla adresu ip 22.33.44.55 na czas 120 minut, z powodem "bo tak"
-																													Adres IP:
-																													Możliwe jest podawanie adresów IP w czterech postaciach:
-																													<b>1.2.3.4</b> - wskazując konkretny adres ip
-																													<b>1.2.3.*, 1.2.*.*, 1.*.*.*</b> - wskazując rodzinę adresów IP, gdzie * oznacza dowolną wartość w adresie IP (dla kompatybilności ze starym polczatem)
-																													<b>1.2.23.0/255.255.255.0</b> - wskazując na rodzinę adresów IP z podaniem maski podsieci
-																													<b>1.2.23.0/24</b> - wskazując na rodzinę adresów IP z podaniem maski podsieci jako maski lewostronnej
-			
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="bantime"><span class="cmd_name">/bantime</span> - <span class="cmd_desc">"Ustawienie domyślnego czasu bana w pokoju",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
-		<div class="cmd_body">
-			<p>
-			"W trakcie"
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="buddies"><span class="cmd_name">/buddies</span> - <span class="cmd_desc">"Wyświetl listę znajomych",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-			"W trakcie"
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="buddy"><span class="cmd_name">/buddy</span> - <span class="cmd_desc">"Dodaj osobę do listy znajomych",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-				"w trakcie"},
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="unbuddy"><span class="cmd_name">/unbuddy</span> - <span class="cmd_desc">"Usuń osobę z listy znajomych",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-			"w trakcie"},
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="reversebuddy"><span class="cmd_name">/reversebuddy</span> - <span class="cmd_desc">"Zmień status osoby jako znajomego",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-				"w trakcie"},
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="ignored"><span class="cmd_name">/ignored</span> - <span class="cmd_desc">"Wyświetl listę osób ignorowanych",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-				"w trakcie"},
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="ignore"><span class="cmd_name">/ignore</span> - <span class="cmd_desc">"Ignoruj daną osobę",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-				"w trakcie"},
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="unignore"><span class="cmd_name">/unignore</span> - <span class="cmd_desc">"Przestań ignorować daną osobę",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-			"w trakcie"},
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="reverseignore"><span class="cmd_name">/reverseignore</span> - <span class="cmd_desc">"Zmień status ignorowania danej osoby",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-			"w trakcie"},
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="cglist"><span class="cmd_name">/cglist</span> - <span class="cmd_desc">"Wyświetl listę dostępnych grup kategorii"</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-			
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="cglistcats"><span class="cmd_name">/cglistcats</span> - <span class="cmd_desc">"Wyświetl listę kategorii w wybranej grupie kategorii",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-																															"<b>/cglistcats <grp_id /></b> - wyświetl listę katregorii dostępnych w grupie o podanej nazwie <grp_id />"},
-	
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="cg"><span class="cmd_name">/cg</span> - <span class="cmd_desc">"Zmienia aktualną grupę kategorii",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-																															"<b>/cg <grp_id /></b> - Zmienia aktualną grupę tematyczną (grupę kateogrii i pokoi) na <i>grp_id</i>\n"
-																													"Listę dostępnych grup kategorii można uzyskać za pomocą polecenia <b>/cglist</b>"},
-	
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="catlistrooms"><span class="cmd_name">/catlistrooms</span> - <span class="cmd_desc">"Wyświetl listę pokoi przypisanych do danej kategorii",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-	"<b>/catlistrooms <cat_id /></b> - wyświetl listę pokoii przypisanych do kategorii o nazwie <cat_id />"},		
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="roomaddcat"><span class="cmd_name">/roomaddcat</span> - <span class="cmd_desc">"Dodaj pokój do kategorii",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">AnyServerOperator</span></div>
-		<div class="cmd_body">
-			<p>
-				"w trakcie"},
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="roomremovecat"><span class="cmd_name">/roomremovecat</span> - <span class="cmd_desc">"Usuń pokój z kategorii",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">AnyServerOperator</span></div>
-		<div class="cmd_body">
-			<p>
-				"w trakcie"},
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="roomlistcats"><span class="cmd_name">/roomlistcats</span> - <span class="cmd_desc">"Wyświetl listę kategorii do których należy pokój",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-				"w trakcie"},
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="owner"><span class="cmd_name">/owner</span> - <span class="cmd_desc">"Dodaj właściciela pokoju",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">Owner</span></div>
-		<div class="cmd_body">
-			<p>
-																															"<b>/addowner {użytkownik}</b> - nadanie uprawnień właściciela pokoju.\n"
-																													"Właściciel nie może zostać wyrzucony z pokoju ani zbanowany. Może również wejść pomimo limitu użytkowników czy braku zaproszeń.\n"
-																													"Generalnie - może wszystko w ramach pokoju."},
-	
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="unowner"><span class="cmd_name">/unowner</span> - <span class="cmd_desc">	"Usuń właściciela pokoju",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">Owner</span></div>
-		<div class="cmd_body">
-			<p>
-				"<b>/removeowner {użytkownik}</b> - usunięcie użytkownika z listy właścicieli danego pokoju\n"},
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="description"><span class="cmd_name">/description</span> - <span class="cmd_desc">	"Ustawienie opisu pokoju widoczny (obok jego nazwy) na liście kategorii", </span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">Owner</span></div>
-		<div class="cmd_body">
-			<p>
-			"<b>/description [opis]</b> - ustawienie opis pokoju."},
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="xmlstore"><span class="cmd_name">/xmlstore</span> - <span class="cmd_desc">"Zapis konfiguracji serwera do pliku XML",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">Root</span></div>
-		<div class="cmd_body">
-			<p>
-																															"Wymuszenie zapisu konfiguracji oraz stanu dynamicznego serwera do pliku <i>output-config.xml</i> oraz <i>output-temp-rooms.xml</i>\n"
-																													"Polecenie to można również wydać poprzez wysłanie sygnału <b>SIGUSR1</b> do serwera"},
-	
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="xmlload"><span class="cmd_name">/xmlload</span> - <span class="cmd_desc">	"Wczytanie konfiguracji serwera z pliku XML",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">Root</span></div>
-		<div class="cmd_body">
-			<p>
-																															"Wymuszenie wczytania konfiguracji oraz stanu dynamicznego serwera z plików <i>input-config.xml</i> oraz <i>input-temp-rooms.xml</i>\n"
-																													"Plik ten powinien powstać poprzez edycję plików 'output-', uzyskanych poleceniem <i>/xmlstore</i>\n"
-																													"Polecenie to można również wydać poprzez wysłanie sygnału <b>SIGUSR2</b> do serwera"},
-	
-			</p>
-		</div>
-	</div>	
-	<!-- -->	
-		<div id="ver"><span class="cmd_name">/ver</span> - <span class="cmd_desc">"Wyświetl wersję serwera"</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-			
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="skick"><span class="cmd_name">/skick</span> - <span class="cmd_desc">"Wyrzucenie osoby z serwera",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">AnyServerOperator</span></div>
-		<div class="cmd_body">
-			<p>
-																													"<b>/skick {użytkownik} [powód]</b> - wyrzucenie użytkownika z ewentualnym podaniem powodu"
-																													"Uprawnienia: Właściciel (Root) nie może zostać z niego wyrzucony; operatorzy niższego szczebla mogą się dowolnie wyrzucać, jeśli mają taką potrzebę ;)"},
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="emotcount"><span class="cmd_name">/xxxxxxxxxx</span> - <span class="cmd_desc">"Liczba emotikon dostępnych dla pokoju",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-				"Polecenie wyświetla liczbę emotikon dostępnych dla danego pokoju oraz informację, czy liczba ta pochodzi z kontenera indywidualnego (dla danego pokoju), czy z kontenera globalnego."},
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="emotadd"><span class="cmd_name">/xxxxxxxxxx</span> - <span class="cmd_desc">"Dodaj emotikonę do pokoju",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">FullOperator</span></div>
-		<div class="cmd_body">
-			<p>
-																													"<b>/emotadd nazwa href</b> - dodanie emotikony <i>id</i> o adresie <i>href</i> do kontenera lokalnego (indywidualnego dla danego pokoju).\n"
-																													"Jeśli w pokój nie ma własnego kontenera lokalnego tylko korzysta z globalnego, to tworzony jest nowy - pusty kontener i do niego dodawana jest emotikona.\n"
-																													"Uwaga! W przypadku utowrzenia kontenera lokalnego dla pokoju, emotikony z kontenera globalnego przestają obowiązywać!"},
-			
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="emotremove"><span class="cmd_name">/emotremove</span> - <span class="cmd_desc">"Usuń emotikonę z pokoju",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">FullOperator</span></div>
-		<div class="cmd_body">
-			<p>
-																													"<b>/emotadd nazwa href</b> - usuwa emotikonę <i>id</i> z kontenera lokalnego (indywidualnego dla danego pokoju).\n"
-																													"Jeśli z lokalnego kontenera usunięto już wszystkie emotikony (jest on pusty), to w pokoju obowiązują emotikony z kontenera głównego."},
-			
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="emotlist"><span class="cmd_name">/emotlist</span> - <span class="cmd_desc">"Lista emotikon", </span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">FullOperator</span></div>
-		<div class="cmd_body">
-			<p>
-																														"Wyświetla listę emotikon dla danego pokoju, jeśli operator/właściciel taki kontener utworzyli.\n"
-																													"Jeśli nie utworzyli, to wyświetlane są emotikony z kontenera globalnego dla całego serwera. Zawartość kontenera ustala jest odgórnie - przed administratorów serwera."},
-		
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="emotinfo"><span class="cmd_name">/emotinfo</span> - <span class="cmd_desc">"Informacje o emotikonie",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-																													"<b>/emotinfo id </b> - wyświetla informacje o emotikonie <b>id</b>, takie jak: scieżkę HTTP, ikonkę, liczbę wyświetleń oraz datę ostatniego wyświetlenia.\n"
-																													"Podawany jest również kontener, z którego pochodzi emotikona: globalny (dla serwera i pokoi bez emotikon) oraz lokalny (indywidualny dla danego pokoju)"},
-			
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="history"><span class="cmd_name">/history</span> - <span class="cmd_desc">"Pokaż ostatnie wypowiedzi",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-																													"Polecenie wyświetla N ostatnich wypowiedzi w danym pokoju. Liczba N jest określana poleceniem /historylimit"},
-			
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="historylimit"><span class="cmd_name">/historylimit</span> - <span class="cmd_desc">	"Ustaw limit ostatnich wypowiedzi",</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">Owner</span></div>
-		<div class="cmd_body">
-			<p>
-		"<b>/historylimit [wartość]</b> - polecenie ustawia wielkość historii w danym pokoju. Górnym ograniczeniem jest parametr serwera (domyślnie 10 tekstów)"},		
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="mute"><span class="cmd_name">/mute</span> - <span class="cmd_desc">brak opisu</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
-		<div class="cmd_body">
-			<p>
-			
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="unmute"><span class="cmd_name">/unmute</span> - <span class="cmd_desc">brak opisu</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
-		<div class="cmd_body">
-			<p>
-			
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="muted"><span class="cmd_name">/muted</span> - <span class="cmd_desc">brak opisu</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
-		<div class="cmd_body">
-			<p>
-			
-			</p>
-		</div>
-	</div>	<!-- -->	
-		<div id="reversemute"><span class="cmd_name">/reversemute</span> - <span class="cmd_desc">brak opisu</span></div>
-	<div class="cmd_inner">
-		<div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
-		<div class="cmd_body">
-			<p>
-			
-			</p>
-		</div>
-	</div>	<!-- -->	
-	<!--
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="bantime" class="cmd_hdr">
+            <span class="cmd_name">/bantime</span> - 
+			<span class="cmd_desc">Ustawienie domyślnego czasu bana w pokoju</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    W trakcie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="buddies" class="cmd_hdr">
+            <span class="cmd_name">/buddies</span> - 
+			<span class="cmd_desc">Wyświetl listę znajomych</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    W trakcie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="buddy" class="cmd_hdr">
+            <span class="cmd_name">/buddy</span> - 
+			<span class="cmd_desc">Dodaj osobę do listy znajomych</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    w trakcie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="unbuddy" class="cmd_hdr">
+            <span class="cmd_name">/unbuddy</span> - 
+			<span class="cmd_desc">Usuń osobę z listy znajomych</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    w trakcie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="reversebuddy" class="cmd_hdr">
+            <span class="cmd_name">/reversebuddy</span> - 
+			<span class="cmd_desc">Zmień status osoby jako znajomego</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    w trakcie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="ignored" class="cmd_hdr">
+            <span class="cmd_name">/ignored</span> - 
+			<span class="cmd_desc">Wyświetl listę osób ignorowanych</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    w trakcie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="ignore" class="cmd_hdr">
+            <span class="cmd_name">/ignore</span> - 
+			<span class="cmd_desc">Ignoruj daną osobę</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    w trakcie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="unignore" class="cmd_hdr">
+            <span class="cmd_name">/unignore</span> - 
+			<span class="cmd_desc">Przestań ignorować daną osobę</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    w trakcie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="reverseignore" class="cmd_hdr">
+            <span class="cmd_name">/reverseignore</span> - 
+			<span class="cmd_desc">Zmień status ignorowania danej osoby</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    w trakcie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="cglist" class="cmd_hdr">
+            <span class="cmd_name">/cglist</span> - 
+			<span class="cmd_desc">Wyświetl listę dostępnych grup kategorii</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="cglistcats" class="cmd_hdr">
+            <span class="cmd_name">/cglistcats</span> - 
+			<span class="cmd_desc">Wyświetl listę kategorii w wybranej grupie kategorii</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/cglistcats {grp_id}</b>- wyświetl listę katregorii dostępnych w grupie o podanej nazwie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="cg" class="cmd_hdr"><span class="cmd_name">/cg</span> - Z<span class="cmd_desc">mienia aktualną grupę kategorii</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/cg {grp_id}</b>- Zmienia aktualną grupę tematyczną (grupę kateogrii i pokoi) na <i>grp_id.<br>
+                    </i>Listę dostępnych grup kategorii można uzyskać za pomocą polecenia <b>/cglist</b>
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="catlistrooms" class="cmd_hdr">
+            <span class="cmd_name">/catlistrooms</span> - 
+			<span class="cmd_desc">Wyświetl listę pokoi przypisanych do danej kategorii</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/catlistrooms {cat_id}
+                    </b>- wyświetl listę pokoii przypisanych do kategorii o nazwie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="roomaddcat" class="cmd_hdr">
+            <span class="cmd_name">/roomaddcat</span> - 
+			<span class="cmd_desc">Dodaj pokój do kategorii</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">AnyServerOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    w trakcie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="roomremovecat" class="cmd_hdr">
+            <span class="cmd_name">/roomremovecat</span> - 
+			<span class="cmd_desc">Usuń pokój z kategorii</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">AnyServerOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    w trakcie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="roomlistcats" class="cmd_hdr">
+            <span class="cmd_name">/roomlistcats</span> - 
+			<span class="cmd_desc">Wyświetl listę kategorii do których należy pokój</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    w trakcie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="owner" class="cmd_hdr">
+            <span class="cmd_name">/owner</span> - 
+			<span class="cmd_desc">Dodaj właściciela pokoju</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">Owner</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/addowner {użytkownik}</b> - nadanie uprawnień właściciela pokoju.<br>
+                    Właściciel nie może zostać wyrzucony z pokoju ani zbanowany. Może również wejść pomimo limitu użytkowników czy braku zaproszeń.<br>
+                    Generalnie - może wszystko w ramach pokoju.
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="unowner" class="cmd_hdr">
+            <span class="cmd_name">/unowner</span> - 
+			<span class="cmd_desc">Usuń właściciela pokoju</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">Owner</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/removeowner {użytkownik}</b> - usunięcie użytkownika z listy 
+				właścicieli danego pokoju
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="description" class="cmd_hdr">
+            <span class="cmd_name">/description</span> - 
+			<span class="cmd_desc">Ustawienie opisu pokoju widoczny (obok jego nazwy) na liście kategorii</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">Owner</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/description [opis]</b> - ustawienie opis pokoju.
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="xmlstore" class="cmd_hdr">
+            <span class="cmd_name">/xmlstore</span> - 
+			<span class="cmd_desc">Zapis konfiguracji serwera do pliku XML</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">Root</span></div>
+            <div class="cmd_body">
+                <p>
+                    Wymuszenie zapisu konfiguracji oraz stanu dynamicznego serwera do pliku <i>output-config.xml</i> oraz <i>output-temp-rooms.xml<br>
+                    </i>Polecenie to można również wydać poprzez wysłanie sygnału <b>SIGUSR1</b> do serwera
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="xmlload" class="cmd_hdr">
+            <span class="cmd_name">/xmlload</span> - 
+			<span class="cmd_desc">Wczytanie konfiguracji serwera z pliku XML</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">Root</span></div>
+            <div class="cmd_body">
+                <p>
+                    Wymuszenie wczytania konfiguracji oraz stanu dynamicznego serwera z plików <i>input-config.xml</i> oraz <i>input-temp-rooms.xml<br>
+                    </i>Plik ten powinien powstać poprzez edycję plików 'output-', uzyskanych poleceniem <i>/xmlstore<br>
+                    </i>Polecenie to można również wydać poprzez wysłanie sygnału <b>SIGUSR2</b> do serwera.
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="ver" class="cmd_hdr">
+            <span class="cmd_name">/ver</span> - 
+			<span class="cmd_desc">Wyświetl wersję serwera</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    w trakcie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="skick" class="cmd_hdr">
+            <span class="cmd_name">/skick</span> - 
+			<span class="cmd_desc">Wyrzucenie osoby z serwera</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">AnyServerOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/skick {użytkownik} [powód]</b> - wyrzucenie użytkownika z ewentualnym podaniem powodu.<br>
+                    Uprawnienia: Właściciel (Root) nie może zostać z niego wyrzucony; operatorzy niższego szczebla mogą się dowolnie wyrzucać, jeśli mają taką potrzebę ;)
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="emotcount" class="cmd_hdr">
+            <span class="cmd_name">/emotlist</span> - 
+			<span class="cmd_desc">Liczba emotikon dostępnych dla pokoju</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    Polecenie wyświetla liczbę emotikon dostępnych dla danego pokoju 
+				oraz informację, czy liczba ta pochodzi z kontenera 
+				indywidualnego (dla danego pokoju), czy z kontenera globalnego.
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="emotadd" class="cmd_hdr">
+            <span class="cmd_name">/emotadd</span> - 
+			<span class="cmd_desc">Dodaj emotikonę do pokoju</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">FullOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/emotadd nazwa href</b> - dodanie emotikony <i>id</i> o adresie <i>href</i> do kontenera lokalnego (indywidualnego dla danego pokoju).<br>
+                    Jeśli w pokój nie ma własnego kontenera lokalnego tylko korzysta z globalnego, to tworzony jest nowy - pusty kontener i do niego dodawana jest emotikona.<br>
+                    Uwaga! W przypadku utowrzenia kontenera lokalnego dla pokoju, emotikony z kontenera globalnego przestają obowiązywać!
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="emotremove" class="cmd_hdr">
+            <span class="cmd_name">/emotremove</span> - 
+			<span class="cmd_desc">Usuń emotikonę z pokoju</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">FullOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/emotadd nazwa href</b> - usuwa emotikonę <i>id</i> z kontenera lokalnego (indywidualnego dla danego pokoju).<br>
+                    Jeśli z lokalnego kontenera usunięto już wszystkie emotikony (jest on pusty), to w pokoju obowiązują emotikony z kontenera głównego.
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="emotlist" class="cmd_hdr">
+            <span class="cmd_name">/emotlist</span> - 
+			<span class="cmd_desc">Lista emotikon</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">FullOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    Wyświetla listę emotikon dla danego pokoju, jeśli operator/właściciel taki kontener utworzyli.<br>
+                    Jeśli nie utworzyli, to wyświetlane są emotikony z kontenera globalnego dla całego serwera. Zawartość kontenera ustala jest odgórnie - przed administratorów serwera.
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="emotinfo" class="cmd_hdr">
+            <span class="cmd_name">/emotinfo</span> - 
+			<span class="cmd_desc">Informacje o emotikonie</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/emotinfo id </b>- wyświetla informacje o emotikonie <b>id</b>, takie jak: scieżkę HTTP, ikonkę, liczbę wyświetleń oraz datę ostatniego wyświetlenia.<br>
+                    Podawany jest również kontener, z którego pochodzi emotikona: globalny (dla serwera i pokoi bez emotikon) oraz lokalny (indywidualny dla danego pokoju)
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="history" class="cmd_hdr">
+            <span class="cmd_name">/history</span> - 
+			<span class="cmd_desc">Pokaż ostatnie wypowiedzi</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    Polecenie wyświetla N ostatnich wypowiedzi w danym pokoju. Liczba N jest określana poleceniem /historylimit
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="historylimit" class="cmd_hdr">
+            <span class="cmd_name">/historylimit</span> - 
+			<span class="cmd_desc">Ustaw limit ostatnich wypowiedzi</span>
+        </div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">Owner</span></div>
+            <div class="cmd_body">
+                <p>
+                    <b>/historylimit [wartość]</b> - polecenie ustawia wielkość historii 
+			w danym pokoju. Górnym ograniczeniem jest parametr serwera 
+			(domyślnie 10 tekstów)
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="mute" class="cmd_hdr"><span class="cmd_name">/mute</span> - <span class="cmd_desc">brak opisu</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    w trakcie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="unmute" class="cmd_hdr"><span class="cmd_name">/unmute</span> - <span class="cmd_desc">brak opisu</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    w trakcie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="muted" class="cmd_hdr"><span class="cmd_name">/muted</span> - <span class="cmd_desc">brak opisu</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">NormalPlayer</span></div>
+            <div class="cmd_body">
+                <p>
+                    w trakcie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <div class="cmd">
+        <div id="reversemute" class="cmd_hdr"><span class="cmd_name">/reversemute</span> - <span class="cmd_desc">brak opisu</span></div>
+        <div class="cmd_inner">
+            <div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
+            <div class="cmd_body">
+                <p>
+                    w trakcie
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- -->
+        <!--
 		<div id="xxxxxxxxxxx"><span class="cmd_name">/xxxxxxxxxx</span> - <span class="cmd_desc">xxxxxxxxxxxxxxxxxxxxx</span></div>
 	<div class="cmd_inner">
 		<div>Minimalny poziom uprawnień: <span class="cmd_level">xxxxxxxxxxxxxxxxxxxxx</span></div>
@@ -775,7 +1113,7 @@ padding-left: 10px;
 	</div>		</div>
 																										
 	-->
-		</div>
+    </div>
 
-	</body>
-	</html>
+</body>
+</html>
