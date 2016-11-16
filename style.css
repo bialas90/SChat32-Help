@@ -1,0 +1,40 @@
+﻿.cmd_name {
+	font-weight: bold;
+	color: navy;
+}
+.cmd_desc {
+}
+.cmd_level {
+	font-weight: bold;
+	color: green;
+}
+.cmd_body {
+}
+body {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 10pt;
+	background-color: white;
+}
+.cmd_inner {
+	padding-left: 10px;
+}
+.cr {
+	color: #FF0000;
+}
+.cmd_hdr {
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	padding-bottom: 1px;
+}
+.cmd {
+	padding-bottom: 32px;
+}
+.u {
+		text-decoration: underline;
+	}
+.cg {
+		color: #00FF00;
+	}
+	.cb {
+		color: #0000FF;
+	}
