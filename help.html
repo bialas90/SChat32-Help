@@ -21,6 +21,9 @@
 		border-collapse: collapse;
 		border: 0px solid #000000;
 	}
+	.auto-style6 {
+		font-family: "Courier New", Courier, monospace;
+	}
 	</style>
 </head>
 <body>
@@ -140,8 +143,9 @@
 		</ul>
         <h1>Flagi - Funkcje Pokoju</h1>
 				<p>Pokoje mogą mieć włączone, lub wyłączone flagi. 
-				Służy do tego komenda: /mode +/-, np:
-				/mode +REG -TMP</p>
+				Służy do tego komenda: <span class="auto-style6"><strong>
+				<a href="#mode">/mode</a></strong></span> np:
+				<span class="auto-style6">/mode +REG -TMP</span></p>
 				<ul>
 			<li><strong>PRV</strong> - pokój prywatny (nie wyświetla się na liście pokoi)</li>
 			<li><strong>INV</strong> - pokój na zaproszenie </li>
@@ -154,6 +158,8 @@
 			<li><strong>REG</strong> - do pokoju mogą wejść osoby zarejestrowane</li>
 			<li><strong>AD</strong> - pokój dla osób powyżej 18 lat</li>
 			<li><strong>TMP</strong> - pokój tymczasowy, znika po 20 minutach od wyjścia ostatniego użytkownika</li>
+					<li><strong>ERO </strong>- w pokoju można używać emotikon 
+					erotycznych</li>
 				</ul>
 				
 				
@@ -579,30 +585,80 @@
                 <div>Minimalny poziom uprawnień: <span class="cmd_level">Owner</span></div>
                 <div class="cmd_body">
                     <p>
+                        Polecenie pozwala ustawić jeden bądź wiecej trybów 
+						pokoju. Tryby mogą być zmieniane jedynie przez 
+						właściciela (lub właścicieli) pokoju.</p>
+					<p>
                         <b>/mode {[+|-]nazwa_trybu} [limit]</b> - ustawia bądź wyświetla aktualny tryb pokoju.<br />
                         Operator <b>+</b> lub <b>-</b> odpowiada za <b>włączenie</b> (+) lub <b>wyłączenie</b> (-) danego trybu pokoju.<br />
                         <b>/mode</b> - wyświetla tryb pokoju
-                    </p>
+                    	(polecenie /mode bez parametrów)</p>
                     <p>Tryby:</p>
                     <ul>
-                        <li><b>Inv</b> - pokój tylko na zaproszenie; przy wejściu do pokoju sprawdzane jest zaproszenie (patrz polecenie 
-				<i>/invite</i>)</li>
-                        <li><b>Prv</b> - ukryj pokój; nie będzie on wyświetlany na liście pokoi</li>
-                        <li><b>Lim</b> - ustal górny limit osób w pokoju na [<i>limit</i>]</li>
-                        <li><b>Tmp</b> - ustaw pokój jako tymczasowy. Flaga <b>+TMP</b> oznacza, że pokój zostanie usunięty jeśli przez klika minut nikt się w nim nie pojawi.</li>
-                        <li><b>Hist</b> - wyświetlaj historię wypowiedzi każdemu, zaraz po jego wejściu do pokoju.</li>
-                        <li><b>HAI</b> - użytkownik nieposiadający minimalnych uprawnień operatorskich nie będzie mógł wyświetlić listy operatorów/właścicieli oraz listy banów.</li>
-                        <li><b>Reg</b> - do pokoju mogą wejść <span class="u">wyłącznie</span> użytkownicy zarejestrowani.</li>
+                        <li><b>Inv</b> - wejście do pokój możliwe tylko na zaproszeniem 
+						-- przy wejściu do pokoju sprawdzane jest zaproszenie (patrz polecenie 
+				<a href="#invite"><span class="auto-style6">/invite</span></a>).</li>
+                        <li><b>Prv</b> - ukryj pokój; nie będzie on wyświetlany na liście pokoi 
+						w konsoli i aplecie. Do pokoju można jednak swobodnie 
+						wejść, jeśli tylko zna się jego nazwę. Służy do tego 
+						polecenie <span class="auto-style6"><a href="#join">
+						/join</a>.</span></li>
+                        <li><b>Lim</b> - ustala górny limit osób w pokoju na [<i>limit</i>]. 
+						Próba wejścia większej liczby osób, niż <em>limit</em>, 
+						zakończy się odmową wejścia dla nich. Jeśli ustawiany 
+						limit jest mniejszy niż liczba osób obecnych w pokoju, 
+						serwer nikogo nie będzie wyrzucał.</li>
+                        <li><b>Tmp</b> - ustawia pokój jako tymczasowy. Flaga <b>
+						<strong>Tmp </strong></b>oznacza, że pokój zostanie usunięty jeśli przez klikanaście minut nikt się w nim nie pojawi.</li>
+                        <li><b>Hist</b> - wyświetlaj historię wypowiedzi każdemu, zaraz po jego wejściu do pokoju. 
+						Historia to kilka ostatnich wypowiedzi w pokoju. Liczbę 
+						można zmieniać poleceniem <span class="auto-style6">
+						<a href="#historylimit">/historylimit</a></span>.</li>
+                        <li><b>HAI</b> - wyświetlaj informacje administratorskie 
+						wyłącznie użytkownikom, posiadającym uprawnienia 
+						operatora w pokoju (tempop, halfop, op, owner). Użytkownik nieposiadający minimalnych uprawnień operatorskich nie będzie mógł wyświetlić listy operatorów/właścicieli oraz listy banów.</li>
+                        <li><b>Reg</b> - do pokoju mogą wejść <span class="u">wyłącznie</span> 
+						użytkownicy zarejestrowani (bez tyld ~ przed nickiem). 
+						Flagę <strong>Reg</strong> można również wykorzystywać w 
+						przypadku floodu z nicków tymczasowych - ustawiona flaga
+						<strong>Reg</strong> nie pozwoli im wejść.</li>
                         <li><b>Ad</b> - do pokoju mogą wejść <span class="u">wyłącznie</span> osoby pełnoletnie, które potwierdził swoją pełnoletniość w profilu użytkownika.</li>
+						<li><strong>Ero</strong> - w pokoju można wyświetlać 
+						emotikony erotyczne. Emotikony są oznaczane jako 
+						erotyczne przez osobę dodającą lub przez SOPa.</li>
                     </ul>
                     <p>
-                        Przykład:<b><br />
-                            /mode +inv</b> - włącz sprawdzanie zaproszeń przy wejściu do pokoju<b><br />
-                                /mode -inv</b> - wyłącz sprawdzanie zaproszeń; teraz każdy może wejść<b><br />
-                                    /mode +lim 50</b> - ustaw limit jednoczesnych użytkowników w pokoju na 50
-                    </p>
-					<p class="cr">
-                        <strong>TODO: więcej przykładów</strong></p>
+                        Po utworzeniu pokoju z poziomu strony wszystkie flagi (z 
+						wyjątkiem <strong>Tmp</strong>) są wyłaczone. Utworzenie 
+						pokoju poleceniem <span class="auto-style6">
+						<a href="#join">/join</a></span> (wejście do niego) 
+						powoduje utworzenie pokoju ze wszystkimi flagami 
+						wyłączonymi - tworzony jest pokój tymczasowy.</p>
+					<p>
+                        Przykłady:
+                                                <table >
+							<tr>
+								<td class="auto-style6" style="width: 200px">/mode +inv </td>
+								<td>- Włącz sprawdzanie zaproszeń przy wejściu do pokoju. 
+								Tylko osoby zaproszone wcześniej za pomocą 
+								polecenia <a href="#invite">/invite</a> mogą 
+								wejść.</td>
+							</tr>
+							<tr>
+								<td class="auto-style6" >/mode -inv</td>
+								<td>- Wyłącz sprawdzanie zaproszeń; teraz każdy może wejść.</td>
+							</tr>
+							<tr>
+								<td class="auto-style6" >/mode +lim 50</td>
+								<td>- Ustaw limit jednoczesnych użytkowników w pokoju na 50.</td>
+							</tr>
+							<tr>
+								<td class="auto-style6" >/mode +ero</td>
+								<td>Pozwól użytkownikom w pokoju używać emotikon 
+								erotycznych.</td>
+							</tr>
+						</table>
+						&nbsp;</p>
                 </div>
             </div>
         </div>
@@ -625,12 +681,13 @@
         </div>
         <!-- -->
         <div class="cmd">
-            <div id="quit" class="cmd_hdr"><span class="cmd_name">/quit</span> - <span class="cmd_desc">Zakończenie połączenia z serwerem czata</span></div>
+            <div id="quit" class="cmd_hdr"><span class="cmd_name">/quit</span> - <span class="cmd_desc">Zakończenie połączenia z serwerem czata 
+				przez użytkownika</span></div>
             <div class="cmd_inner">
                 <div>Minimalny poziom uprawnień: <span class="cmd_level">Normal</span></div>
                 <div class="cmd_body">
                     <p>
-                        <b>/quit [komunikat]</b> - zakończenie połączenia wraz z wyświetleniem ewentualnego komunikatu przy opuszczaniu pokoi
+                        <b>/quit [<em>komunikat</em>]</b> - zakończenie połączenia wraz z wyświetleniem ewentualnego komunikatu przy opuszczaniu pokoi
                     </p>
                 </div>
             </div>
@@ -660,7 +717,8 @@
                         Składnia:
                     </p>
                     <p>
-                        <b>/ban nick [czas] [powód]</b> - dodaje bana dla użytkownika <i>nick</i> na podany czas (w minutach) oraz powód
+                        <b>/ban <em>nick</em> [czas] [<em>powód</em>]</b> - dodaje bana dla użytkownika <i>nick</i> na podany 
+						<em>czas</em> (w minutach) oraz <em>powód</em>
                     </p>
                     <p>
                         Przykład:
@@ -687,7 +745,7 @@
                 <div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
                 <div class="cmd_body">
                     <p>
-                        <b>/unban ip</b> - zdejmuje bana z adresu <i>ip</i>
+                        <b>/unban {<em>ip</em>}</b> - zdejmuje bana z adresu <i>ip</i>
                     </p>
                     <p>
                         Przykład:
@@ -711,7 +769,8 @@
                 <div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
                 <div class="cmd_body">
                     <p>
-                        <b>/banip ip [czas] [powód]</b> - dodaj bana dla adresu ip na podany czas oraz powód
+                        <b>/banip {<em>ip</em>} [<em>czas</em>] [<em>powód</em>]</b> - dodaj bana dla adresu 
+						<em>ip</em> na podany <em>czas</em> oraz <em>powód</em>
                     </p>
                     <p>
                         Przykład:
@@ -745,8 +804,23 @@
                 <div>Minimalny poziom uprawnień: <span class="cmd_level">AnyOperator</span></div>
                 <div class="cmd_body">
                     <p>
-                       Wyświetla domyślny czas trwania komendy /ban - domyślnie (15 min)
+                       Wyświetla oraz pozwala ustawić domyślny czas trwania 
+					   banów, danych poleceniem <a href="#ban">/ban</a> oraz
+					   <a href="#banip">/banip</a>. Dla nowego pokoju domyślny 
+					   czas bana wynosi 15 minut.
                     </p>
+					<p>
+                       <strong>/bantime [n] </strong>- Ustawia czas domyślnego 
+					   bana w pokoju na <em>n</em> minut. Jeśli parametr <em>n</em> 
+					   nie jest podany, polecenie /bantime wyświetla aktualnie 
+					   ustawiony czas bana.</p>
+					<p>Przykład:</p>
+					<ul>
+						<li><strong>/bantime</strong> - wyświetl czas bana w 
+						pokoju</li>
+						<li><strong>/bantime 1440</strong> - ustaw domyślny czas 
+						bana na 24h</li>
+					</ul>
                 </div>
             </div>
         </div>
