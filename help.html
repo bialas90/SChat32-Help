@@ -143,15 +143,17 @@
 		</ul>
         <h1>Flagi - Funkcje Pokoju</h1>
 				<p>Pokoje mogą mieć włączone, lub wyłączone flagi. 
-				Służy do tego komenda: <span class="auto-style6"><strong>
-				<a href="#mode">/mode</a></strong></span> np:
-				<span class="auto-style6">/mode +REG -TMP</span></p>
+				Służy do tego komenda: 
+				<a href="#mode">/mode</a> np:
+				<code>/mode +REG -TMP</code></p>
 				<ul>
 			<li><strong>PRV</strong> - pokój prywatny (nie wyświetla się na liście pokoi)</li>
 			<li><strong>INV</strong> - pokój na zaproszenie </li>
-					zaproszenie -> /invite nick </br>
-					usuniecie zaproszenia -> /uninvite nick </br>
-					lista zaproszonych ->/invited)</br>
+					zaproszenie<ul>
+				<li>poleceniem <a href="#invite">/invite</a> <strong>nick</strong> dodajesz zaproszenie</li>
+				<li>poleceniem <a href="#uninvite">/uninvite</a><strong>nick</strong> cofasz zaproszenie</li>
+				<li>poleceniem <a href="#invited">/invited</a> wyświetlasz listę zaproszeń</li>
+			</ul>
 			<li><strong>LIM</strong> - ustawia limit osób w pokoju (obecnie bezużyteczna)</li>
 			<li><strong>HIST</strong> - po wejściu do pokoju wyświetla się historia 10 wiadomości	</li>
 			<li><strong>HAI</strong> - ukrywa w pokoju informacje administracyjne</li>
@@ -408,11 +410,19 @@
         <div class="cmd">
             <div id="unop" class="cmd_hdr"><span class="cmd_name">/unop</span> - <span class="cmd_desc">Odebranie uprawnień operatora</span></div>
             <div class="cmd_inner">
-                <div>Minimalny poziom uprawnień: <span class="cmd_level">Owner</span></div>
+                <div>Minimalny poziom uprawnień: <span class="cmd_level">HalfOperator</span></div>
                 <div class="cmd_body">
                     <p>
-                        <b>/unop {<i>użytkownik</i>}</b> - cofnięcie wszelkich uprawnień użytkownikowi.
+                        <b>/unop {<i>użytkownik</i>}</b> - cofnięcie wszystkich&nbsp; uprawnień użytkownikowi.
                     </p>
+					<p>
+                        Uprawnienia operatora można odbierać wyłącznie 
+						operatorom niższego poziomu, np: <strong>pełny operator</strong> 
+						może odebrać uprawnienia <strong>Półoperatorowi</strong>, 
+						ale nie odwrotnie. Operator nie może również odbierać 
+						uprawnień operatorom na swoim poziomie, np. <strong>
+						półoperator</strong> nie może odebrać uprawnień innemu
+						<strong>półoperatorowi</strong>.</p>
                 </div>
             </div>
         </div>
@@ -427,7 +437,9 @@
                 <div class="cmd_body">
                     <p>
                         Wyświetla listę operatorów w danym pokoju. Format otrzymywanej odpowiedzi jest wymuszony przez konsole ICeQ i NPCC.
-                    </p>
+                    	W celu wyświetlenia pełnej listy operatorów i 
+						właścicieli w pokoju skorzystaj z polecenia
+						<a href="#owners">/owners</a>.</p>
                 </div>
             </div>
         </div>
@@ -438,7 +450,8 @@
                 <div>Minimalny poziom uprawnień: <span class="cmd_level">Normal</span></div>
                 <div class="cmd_body">
                     <p>
-                        Wyświetla kompletną listę operatoró i właścicieli danego pokoju. Polecenie to jest nieokrojoną wersją <b>/ops</b>
+                        Polecenia wyświetla kompletną listę operatorów i właścicieli danego pokoju. Polecenie to jest nieokrojoną wersją 
+						<a href="#ops">/ops</a>.
                     </p>
                 </div>
             </div>
@@ -635,30 +648,30 @@
 						powoduje utworzenie pokoju ze wszystkimi flagami 
 						wyłączonymi - tworzony jest pokój tymczasowy.</p>
 					<p>
-                        Przykłady:
+                        Przykłady:	&nbsp;</p>
                                                 <table >
 							<tr>
-								<td class="auto-style6" style="width: 200px">/mode +inv </td>
+								<td style="width: 200px"><code>/mode +inv</code></td>
 								<td>- Włącz sprawdzanie zaproszeń przy wejściu do pokoju. 
 								Tylko osoby zaproszone wcześniej za pomocą 
 								polecenia <a href="#invite">/invite</a> mogą 
 								wejść.</td>
 							</tr>
 							<tr>
-								<td class="auto-style6" >/mode -inv</td>
+								<td><code>/mode -inv</code></td>
 								<td>- Wyłącz sprawdzanie zaproszeń; teraz każdy może wejść.</td>
 							</tr>
 							<tr>
-								<td class="auto-style6" >/mode +lim 50</td>
+								<td><code>/mode +lim 50</code></td>
 								<td>- Ustaw limit jednoczesnych użytkowników w pokoju na 50.</td>
 							</tr>
 							<tr>
-								<td class="auto-style6" >/mode +ero</td>
+								<td><code>/mode +ero</code></td>
 								<td>Pozwól użytkownikom w pokoju używać emotikon 
 								erotycznych.</td>
 							</tr>
 						</table>
-						&nbsp;</p>
+					
                 </div>
             </div>
         </div>
@@ -699,8 +712,16 @@
                 <div>Minimalny poziom uprawnień: <span class="cmd_level">Normal</span></div>
                 <div class="cmd_body">
                     <p>
-                        Wyświetla listę banów dla aktualnego pokoju
-                    </p>
+                        Wyświetla listę banów dla aktualnego pokoju. Parametr
+						<strong>*</strong> pozwala wyświetlić dodatkowe 
+						informacje w postaci:</p>
+					<ul>
+						<li>maski numeru IP, co powala na zbanowanie całej klasy 
+						adresów (patrz polecenie <a href="#ban">ban</a>).</li>
+					</ul>
+					<p>Przykład:<br />
+					<code>/bans *</code>
+					</p>
                 </div>
             </div>
         </div>
@@ -1322,6 +1343,50 @@
                 </div>
             </div>
         </div>
+	
+	<!-- -->
+       
+		<div id="plugin"><span class="cmd_name">/plugin</span> - <span class="cmd_desc">Zarządzanie listą zainstalowanych pluginów</span></div>
+	<div class="cmd_inner">
+		<div>Minimalny poziom uprawnień: <span class="cmd_level">Root</span></div>
+		<div class="cmd_body">
+			<p>
+			Użycie:
+			<br />
+			<strong>/plugin [subpolecenie] [parametry]</strong></p>
+			<p>
+			Subpolecenia:</p>
+			
+
+			<table >
+				<tr>
+					<td style="width: 109px"><em>brak</em></td>
+					<td style="width: 32px">-</td>
+					<td style="width: 491px">Wyświetla listę zainstalowanych 
+					(uruchomionych) pluginów</td>
+				</tr>
+				<tr>
+					<td style="width: 109px"><code>load</code></td>
+					<td style="width: 32px">-</td>
+					<td style="width: 491px">Wczytuje i uruchamia plugin, podany 
+					za pomocą nazwy pliku w <strong>parametrze</strong>. W 
+					nazwie nie może być rozszerzenia. Loader dodaje je 
+					automatycznie, na podstawie typu kompilacji (windows =&gt; 
+					".dll", linux =&gt; ".so")</td>
+				</tr>
+				<tr>
+					<td style="width: 109px"><code>unload</code></td>
+					<td style="width: 32px">-</td>
+					<td style="width: 491px">Zamyka i odłącza plugin o 
+					identyfikatorze numerycznym, podanym w <strong>parametrze</strong>.</td>
+				</tr>
+			</table>
+			
+
+		</div>
+	</div>		</div>
+																										
+
         <!-- -->
         <!--
 		<div id="xxxxxxxxxxx"><span class="cmd_name">/xxxxxxxxxx</span> - <span class="cmd_desc">xxxxxxxxxxxxxxxxxxxxx</span></div>
@@ -1335,7 +1400,6 @@
 	</div>		</div>
 																										
 	-->
-    </div>
 
 </body>
 </html>
